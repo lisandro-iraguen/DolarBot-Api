@@ -26,6 +26,11 @@ const bcraController = require('../controller/bcraController')
 const bcraInstance = new bcraController(dolarSiServiceInstance, utilInstance)
 
 /**
+ * @description Status
+ */
+router.get('/api/status', async (_req, res, _next) => res.sendStatus(200));
+
+/**
  * @description Rutas dolar
  */
 router.get('/api/dolaroficial', dolarInstance.getDolarOficial)

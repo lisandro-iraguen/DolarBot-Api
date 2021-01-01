@@ -1,9 +1,41 @@
+const config = require('../package.json')
+
 class util {
+
+    /**
+     * Obtiene la página de inicio de la aplicación.
+     * @returns Una respusta con el contenido de la página de inicio.
+     */
+    getHome = async (req, res) => {
+        try {
+            res.send(`
+                <head>
+                    <title>DolarBot API - v${config.version}</title>
+                <head>
+                <body>
+                    <a href=\"${config.gitRepo}\">DolarBot API</a> - v<b>${config.version}</b>.
+                </body>
+            `)
+        } catch(e) {
+            console.log(e)
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * Configura los encabezados CORS para las respuestas HTTP.
+     */
+    setCorsHeaders = (req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "*")
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+        res.header('Access-Control-Allow-Headers', 'Content-Type')
+        next();
+    }
 
     /**
      * Obtiene la fecha y hora actual formateada.
      */
-    getDateTime = function () {
+    getDateTime = () => {
         let now = new Date();
         let year = now.getFullYear();
         let month = now.getMonth() + 1;
@@ -26,7 +58,7 @@ class util {
      * @param {string} value Texto que contiene el valor numérico a convertir.
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
      */
-    formatNumber = function (value, decimalPlaces) {
+    formatNumber = (value, decimalPlaces) => {
         let decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.replace('.', '').replace(',', '.'))
         return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : '?'
@@ -36,7 +68,7 @@ class util {
      * Devuelve un objeto que contiene los valores de la cotización anual por mes.
      * @param {object} evolucionAnual Objeto que contiene el valor de cada mes del año.
      */
-    getEvolucion = function (evolucionAnual) {
+    getEvolucion = (evolucionAnual) => {
         const now = new Date()
         const mesActual = now.getMonth() + 1
 
