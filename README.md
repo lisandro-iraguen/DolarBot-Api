@@ -1,55 +1,55 @@
-# API Dolar Argentina
+<p align="center">
+  <img src="https://github.com/guidospadavecchia/DolarBot-Api/blob/master/design/dolarbot-api-logo.png" width="300px" height="300px">
+</p>
 
-Obtene las diferentes cotizaciones del dólar y del riesgo pais.
+<p align="center">
+<i>La API oficial de DolarBot</i>  
+</p>  
+
+***    
+## Status
+[![Heroku App Status](http://heroku-shields.herokuapp.com/dolarbot-api)](https://dolarbot-api.herokuapp.com)
+[![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
+[![NPM](https://img.shields.io/npm/v/express?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
+
+  
+## Descripción
+**DolarBot-API** es la aplicación *backend* de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un *fork* de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).
+
+## Configuración previa
+1. Configurar el parámetro `requiresApiKey` dentro del archivo `package.json`. Si se desea utilizar la API de forma pública, se debe configurar `requiresApiKey = false`, de lo contrario, configurar `requiresApiKey = true` y crear la variable de entorno `DOLARBOT_APIKEY` en el servidor que aloja la aplicación.  
+*Nota: que la misma key debe ser enviada en el header de cada request o de lo contrario la API devolverá un código `403`.* 
+2. Opcionalmente, crear la variable de entorno `PORT` con el puerto dónde estará escuchando la aplicación.
+3. Deploy.
 
 ## Endpoints
 
-URL: https://api-dolar-argentina.herokuapp.com/
+URL: https://dolarbot-api.herokuapp.com/
 
-| Metodo | Endpoint | Descripcion |
+### Cotizaciones del Dólar
+| Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
-| GET | /api/dolaroficial | Cotizacion dólar oficial |
-| GET | /api/dolarblue | Cotizacion dólar blue |
-| GET | /api/contadoliqui | Cotizacion dólar contado con liqui |
-| GET | /api/dolarpromedio | Cotizacion dólar promedio |
-| GET | /api/dolarbolsa | Cotizacion dólar bolsa |
-| GET | /api/riesgopais | Valor riesgo pais |
-| GET | /api/bbva | Cotizacion del Banco BBVA |
-| GET | /api/piano | Cotizacion del Banco Piano |
-| GET | /api/hipotecario | Cotizacion del Banco Hipotecario |
-| GET | /api/galicia | Cotizacion del Banco Galicia |
-| GET | /api/santander | Cotizacion del Banco Santander |
-| GET | /api/ciudad | Cotizacion del Banco Ciudad |
-| GET | /api/supervielle | Cotizacion del Banco Supervielle |
-| GET | /api/patagonia | Cotizacion del Banco Patagonia |
-| GET | /api/comafi | Cotizacion del Banco Comafi |
-| GET | /api/nacion | Cotizacion del Banco Nación |
-| GET | /api/bind | Cotizacion del Banco Industrial |
-| GET | /api/bancor | Cotizacion del Banco de Córdoba |
-| GET | /api/chaco | Cotizacion del Nuevo Banco del Chaco |
-| GET | /api/pampa | Cotizacion del Banco de La Pampa |
-| GET | /api/euro/nacion | Cotizacion del Euro del Banco Nación |
-| GET | /api/euro/galicia | Cotizacion del Euro del Banco Galicia |
-| GET | /api/euro/bbva | Cotizacion del Euro del Banco BBVA |
-| GET | /api/euro/pampa | Cotizacion del Euro del Banco de La Pampa |
-| GET | /api/euro/chaco | Cotizacion del Euro del Nuevo Banco del Chaco |
-| GET | /api/euro/hipotecario | Cotizacion del Euro del Banco Hipotecario |
-| GET | /api/real/nacion | Cotizacion del Real del Banco Nación |
-| GET | /api/real/bbva | Cotizacion del Real del Banco BBVA |
-| GET | /api/real/chaco | Cotizacion del Real del Nuevo Banco del Chaco |
-| GET | /api/bcra/reservas | Reservas del BCRA en dólares |
-| GET | /api/bcra/circulante | Total de pesos en circulación |
-| GET | /api/evolucion/dolaroficial | Evolución mensual anualizada del dólar oficial |
-| GET | /api/evolucion/dolarblue | Evolución mensual anualizada del dólar blue |
-| GET | /api/evolucion/realoficial | Evolución mensual anualizada del Real oficial |
-| GET | /api/evolucion/eurooficial | Evolución mensual anualizada del Euro oficial |
+| GET | /api/dolar/oficial | Cotización del dólar oficial |
+| GET | /api/dolar/blue | Cotización dólar blue |
+| GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
+| GET | /api/dolar/promedio | Cotización dólar promedio |
+| GET | /api/dolar/bolsa | Cotización dólar bolsa |
+| GET | /api/dolar/bancos/bbva | Cotización del Banco BBVA |
+| GET | /api/dolar/bancos/piano | Cotización del Banco Piano |
+| GET | /api/dolar/bancos/hipotecario | Cotización del Banco Hipotecario |
+| GET | /api/dolar/bancos/galicia | Cotización del Banco Galicia |
+| GET | /api/dolar/bancos/santander | Cotización del Banco Santander |
+| GET | /api/dolar/bancos/ciudad | Cotización del Banco Ciudad |
+| GET | /api/dolar/bancos/supervielle | Cotización del Banco Supervielle |
+| GET | /api/dolar/bancos/patagonia | Cotización del Banco Patagonia |
+| GET | /api/dolar/bancos/comafi | Cotización del Banco Comafi |
+| GET | /api/dolar/bancos/nacion | Cotización del Banco Nación |
+| GET | /api/dolar/bancos/bind | Cotización del Banco Industrial |
+| GET | /api/dolar/bancos/bancor | Cotización del Banco de Córdoba |
+| GET | /api/dolar/bancos/chaco | Cotización del Nuevo Banco del Chaco |
+| GET | /api/dolar/bancos/pampa | Cotización del Banco de La Pampa |
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/409e96f2e356a5a1c14e)
-
-### Respuestas
-
-_Todos los endpoints de cotización devuelven la fecha y hora, el valor de compra y el valor de venta. Ejemplo:_
-
+#### Respuestas
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
@@ -58,8 +58,58 @@ _Todos los endpoints de cotización devuelven la fecha y hora, el valor de compr
 }
 ```
 
-_Los endpoints de reservas y circulante devuelven la fecha y hora, el valor y la moneda. Ejemplo:_
+### Cotizaciones del Euro
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/euro/bancos/nacion | Cotización del Euro del Banco Nación |
+| GET | /api/euro/bancos/galicia | Cotización del Euro del Banco Galicia |
+| GET | /api/euro/bancos/bbva | Cotización del Euro del Banco BBVA |
+| GET | /api/euro/bancos/pampa | Cotización del Euro del Banco de La Pampa |
+| GET | /api/euro/bancos/chaco | Cotización del Euro del Nuevo Banco del Chaco |
+| GET | /api/euro/bancos/hipotecario | Cotización del Euro del Banco Hipotecario |
 
+#### Respuestas
+```javascript
+{
+    fecha: "2020/06/21 23:26:42",
+    compra: "126.45",
+    venta: "134.67"
+}
+```
+
+### Cotizaciones del Real
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/real/bancos/nacion | Cotización del Real del Banco Nación |
+| GET | /api/real/bancos/bbva | Cotización del Real del Banco BBVA |
+| GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |
+
+#### Respuestas
+```javascript
+{
+    fecha: "2020/06/21 23:26:42",
+    compra: "13.18",
+    venta: "14.96"
+}
+```
+
+### Indicadores BCRA
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/bcra/riesgopais | Valor del Riesgo País |
+| GET | /api/bcra/reservas | Reservas del BCRA en dólares |
+| GET | /api/bcra/circulante | Total de pesos en circulación |
+
+#### Respuestas
+
+##### Riesgo país
+```javascript
+{
+    fecha: "2020/11/22 19:58:37",
+    valor: "1245"
+}
+```
+##### Reservas y circulante
 ```javascript
 {
     fecha: "2020/11/22 19:58:37",
@@ -68,8 +118,15 @@ _Los endpoints de reservas y circulante devuelven la fecha y hora, el valor y la
 }
 ```
 
-_Los endpoints de evolución devuelven la fecha y hora, y un array de meses con año, mes y valor. Ordenado por año y mes. Ejemplo:_
+### Evolución histórica
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/evolucion/dolar/oficial | Evolución mensual anualizada del Dólar oficial |
+| GET | /api/evolucion/dolar/blue | Evolución mensual anualizada del Dólar blue |
+| GET | /api/evolucion/real/oficial | Evolución mensual anualizada del Real oficial |
+| GET | /api/evolucion/euro/oficial | Evolución mensual anualizada del Euro oficial |
 
+#### Respuestas
 ```javascript
 {
     fecha: "2020/11/22 19:59:46",
@@ -106,7 +163,13 @@ _Los endpoints de evolución devuelven la fecha y hora, y un array de meses con 
 }
 ```
 
-_La informacion es obtenida del sitio DolarSi, por lo cual tambien se puede obtener mucha mas informacion._
+## Agradecimientos
+- [@Castrogiovanni20](https://github.com/Castrogiovanni20) - Por proveer el código del proyecto original y permitirme usar su API libremente.
 
-_Si encontras algun error o tenes alguna sugerencia, podes abrir un Issue o un Pull Request para contribuir._
+## Licencia
+**DolarBot-API** es *open-source*, libre y gratuita. Está licenciada bajo la [MIT License](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/LICENSE).
 
+## 
+<p align="center">
+  <img src="http://ForTheBadge.com/images/badges/built-with-love.svg">
+</p>
