@@ -10,7 +10,7 @@
 ## Status
 [![Heroku App Status](http://heroku-shields.herokuapp.com/dolarbot-api)](https://dolarbot-api.herokuapp.com)
 [![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/express?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
+[![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
 
   
 ## Descripción
