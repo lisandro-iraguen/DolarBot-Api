@@ -1,5 +1,5 @@
 const config = require('../package.json')
-const apiKeyName = 'DOLARBOT_APIKEY';
+const apiKeyName = 'dolarbot_apikey';
 
 class auth {
 
