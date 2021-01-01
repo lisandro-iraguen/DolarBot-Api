@@ -13,7 +13,7 @@ class util {
                     <title>DolarBot API - v${config.version}</title>
                 <head>
                 <body>
-                    <a href=\"${config.gitRepo}\">DolarBot API</a> - v<b>${config.version}</b>.
+                    <a href=\"${config.gitRepo}\">DolarBot API</a> - v<b>${config.version}</b>
                 </body>
             `)
         } catch(e) {
