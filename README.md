@@ -16,7 +16,7 @@
 ## Descripción
 **DolarBot-API** es la aplicación *backend* de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un *fork* de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).
 
-## Configuración previa
+## Configuración
 1. Configurar el parámetro `requiresApiKey` dentro del archivo `package.json`. Si se desea utilizar la API de forma pública, se debe configurar `requiresApiKey = false`, de lo contrario, configurar `requiresApiKey = true` y crear la variable de entorno `DOLARBOT_APIKEY` en el servidor que aloja la aplicación.  
 *Nota: que la misma key debe ser enviada en el header de cada request o de lo contrario la API devolverá un código `403`.* 
 2. Opcionalmente, crear la variable de entorno `PORT` con el puerto dónde estará escuchando la aplicación.
@@ -92,6 +92,46 @@ URL: https://dolarbot-api.herokuapp.com/
     venta: "14.96"
 }
 ```
+
+### Metales
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/metales/oro | Valor internacional del Oro |
+| GET | /api/metales/plata | Valor internacional de la Plata |
+| GET | /api/metales/cobre | Valor internacional del Cobre |
+
+#### Respuestas
+
+```javascript
+{
+    fecha: "2021/01/02 01:32:14",
+    valor: "1893.40",
+    unidad: "Onza",
+    moneda: "USD",
+}
+```
+
+### Crypto
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/crypto/bitcoin | Valor del Bitcoin (BTC) |
+| GET | /api/crypto/bitcoincash | Valor del Bitcoin Cash (BCH) |
+| GET | /api/crypto/ethereum | Valor del Ethereum (ETH) |
+| GET | /api/crypto/monero | Valor del Monero (XMR) |
+| GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
+| GET | /api/crypto/ripple | Valor del Ripple (XRP) |
+| GET | /api/crypto/dash | Valor del DASH (DASH) |
+
+#### Respuestas
+
+```javascript
+{
+    fecha: "2021/01/02 01:32:42",
+    ars: "2497478.00",
+    usd: "29342.00",
+}
+```
+
 
 ### Indicadores BCRA
 | Método | Endpoint | Descripción |
