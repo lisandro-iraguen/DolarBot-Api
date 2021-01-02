@@ -24,8 +24,6 @@
 
 ## Endpoints
 
-URL: https://dolarbot-api.herokuapp.com/
-
 ### Cotizaciones del Dólar
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
