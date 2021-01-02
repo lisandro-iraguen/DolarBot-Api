@@ -1,7 +1,9 @@
+const util = require("../util/util")
+
 class bancosController {
-    constructor(dolarSiService, util) {
-        this.dolarSiService = dolarSiService
-        this.util = util
+    constructor(dolarSiService) {
+        this.dolarSiService = dolarSiService;
+        this.util = new util();
     }
 
 

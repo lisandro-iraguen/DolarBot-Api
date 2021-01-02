@@ -1,29 +1,29 @@
 const express = require('express');
 const router = express.Router();
 
-const util = require('../util/util')
-const utilInstance = new util()
-
+//Services
 const dolarSiService = require('../services/dolarSiService')
+const coinGeckoService = require('../services/coinGeckoService')
+
 const dolarSiServiceInstance = new dolarSiService()
+const coinGeckoInstance = new coinGeckoService()
 
+//Controllers
 const dolarController = require('../controller/dolarController')
-const dolarInstance = new dolarController(dolarSiServiceInstance, utilInstance)
-
 const bancoController = require('../controller/bancosController')
-const bancoInstance = new bancoController(dolarSiServiceInstance, utilInstance)
-
 const riesgoController = require('../controller/riesgoController');
-const riesgoInstance = new riesgoController(dolarSiServiceInstance, utilInstance)
-
 const euroController = require('../controller/euroController')
-const euroInstance = new euroController(dolarSiServiceInstance, utilInstance)
-
 const realController = require('../controller/realController')
-const realInstance = new realController(dolarSiServiceInstance, utilInstance)
-
 const bcraController = require('../controller/bcraController')
-const bcraInstance = new bcraController(dolarSiServiceInstance, utilInstance)
+const cryptoController = require('../controller/cryptoController')
+
+const dolarInstance = new dolarController(dolarSiServiceInstance)
+const bancoInstance = new bancoController(dolarSiServiceInstance)
+const riesgoInstance = new riesgoController(dolarSiServiceInstance)
+const euroInstance = new euroController(dolarSiServiceInstance)
+const realInstance = new realController(dolarSiServiceInstance)
+const bcraInstance = new bcraController(dolarSiServiceInstance)
+const cryptoInstance = new cryptoController(coinGeckoInstance)
 
 /**
  * @description Status
@@ -89,5 +89,15 @@ router.get('/api/evolucion/dolar/blue', dolarInstance.getEvolucionDolarBlue)
 router.get('/api/evolucion/real/oficial', realInstance.getEvolucionReal)
 router.get('/api/evolucion/euro/oficial', euroInstance.getEvolucionEuro)
 
+/**
+ * @description Rutas Cryptomonedas
+ */
+router.get('/api/crypto/bitcoin', cryptoInstance.getBitcoin)
+router.get('/api/crypto/ethereum', cryptoInstance.getEthereum)
+router.get('/api/crypto/bitcoincash', cryptoInstance.getBitcoinCash)
+router.get('/api/crypto/monero', cryptoInstance.getMonero)
+router.get('/api/crypto/litecoin', cryptoInstance.getLitecoin)
+router.get('/api/crypto/ripple', cryptoInstance.getRipple)
+router.get('/api/crypto/dash', cryptoInstance.getDash)
 
 module.exports = router

@@ -6,7 +6,7 @@ class util {
      * Obtiene la página de inicio de la aplicación.
      * @returns Una respusta con el contenido de la página de inicio.
      */
-    getHome = async (req, res) => {
+    getHome = async (_req, res) => {
         try {
             res.send(`
                 <head>
@@ -25,7 +25,7 @@ class util {
     /**
      * Configura los encabezados CORS para las respuestas HTTP.
      */
-    setCorsHeaders = (req, res, next) => {
+    setCorsHeaders = (_req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*")
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
         res.header('Access-Control-Allow-Headers', 'Content-Type')
@@ -60,7 +60,7 @@ class util {
      */
     formatNumber = (value, decimalPlaces) => {
         let decimals = decimalPlaces || 2;
-        let convertedValue = parseFloat(value.replace('.', '').replace(',', '.'))
+        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value)
         return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : '?'
     }
 

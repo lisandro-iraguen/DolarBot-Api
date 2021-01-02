@@ -1,7 +1,9 @@
+const util = require("../util/util")
+
 class realController {
-    constructor(dolarSiService, util) {
+    constructor(dolarSiService) {
         this.dolarSiService = dolarSiService
-        this.util = util
+        this.util = new util()
     }
 
     /**
