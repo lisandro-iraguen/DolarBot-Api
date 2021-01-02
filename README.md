@@ -201,6 +201,10 @@
 }
 ```
 
+## APIs
+- [DolarSí](https://www.dolarsi.com/api/dolarSiInfo.xml)
+- [CoinGecko](https://www.coingecko.com/es/api)
+
 ## Agradecimientos
 - [@Castrogiovanni20](https://github.com/Castrogiovanni20) - Por proveer el código del proyecto original y permitirme usar su API libremente.
 
