@@ -8,10 +8,9 @@
 
 ***    
 ## Status
-[![Heroku App Status](http://heroku-shields.herokuapp.com/dolarbot-api)](https://dolarbot-api.herokuapp.com)
 [![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
-
+[![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json) 
+[![Heroku App Status](http://heroku-shields.herokuapp.com/dolarbot-api)](https://dolarbot-api.herokuapp.com)
   
 ## Descripción
 **DolarBot-API** es la aplicación *backend* de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un *fork* de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).  
@@ -131,6 +130,22 @@
 }
 ```
 
+### Venezuela
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/vzla/dolar | Cotizaciones del dólar en bolívares (VEF) |
+| GET | /api/vzla/euro | Cotizaciones del Euro en bolívares (VEF) |
+
+#### Respuestas
+
+```javascript
+{
+    fecha: "2021/01/07 19:33:21",
+    paralelo: "1446012.11",
+    bancos: "1231206.11",
+    cucuta: "87750.00",
+}
+```
 
 ### Indicadores BCRA
 | Método | Endpoint | Descripción |
