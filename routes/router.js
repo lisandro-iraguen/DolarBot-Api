@@ -3,9 +3,11 @@ const router = express.Router();
 
 //Services
 const dolarSiService = require('../services/dolarSiService');
+const dolarTodayService = require('../services/dolarTodayService');
 const coinGeckoService = require('../services/coinGeckoService');
 
 const dolarSiServiceInstance = new dolarSiService();
+const dolarTodayServiceInstance = new dolarTodayService();
 const coinGeckoInstance = new coinGeckoService();
 
 //Controllers
@@ -16,6 +18,7 @@ const euroController = require('../controller/euroController');
 const realController = require('../controller/realController');
 const bcraController = require('../controller/bcraController');
 const metalesController = require('../controller/metalesController');
+const vzlaController = require('../controller/vzlaController');
 const cryptoController = require('../controller/cryptoController');
 
 const dolarInstance = new dolarController(dolarSiServiceInstance);
@@ -25,6 +28,7 @@ const euroInstance = new euroController(dolarSiServiceInstance);
 const realInstance = new realController(dolarSiServiceInstance);
 const bcraInstance = new bcraController(dolarSiServiceInstance);
 const metalesInstance = new metalesController(dolarSiServiceInstance);
+const vzlaInstance = new vzlaController(dolarTodayServiceInstance);
 const cryptoInstance = new cryptoController(coinGeckoInstance);
 
 /**
@@ -108,5 +112,11 @@ router.get('/api/crypto/monero', cryptoInstance.getMonero);
 router.get('/api/crypto/litecoin', cryptoInstance.getLitecoin);
 router.get('/api/crypto/ripple', cryptoInstance.getRipple);
 router.get('/api/crypto/dash', cryptoInstance.getDash);
+
+/**
+ * @description Rutas Venezuela
+ */
+router.get('/api/vzla/dolar', vzlaInstance.getDolarVzla)
+router.get('/api/vzla/euro', vzlaInstance.getEuroVzla)
 
 module.exports = router
