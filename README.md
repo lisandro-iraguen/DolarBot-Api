@@ -219,6 +219,7 @@
 
 ## APIs
 - [DolarSí](https://www.dolarsi.com/api/dolarSiInfo.xml)
+- [DolarToday](https://dolartoday.com/api/)
 - [CoinGecko](https://www.coingecko.com/es/api)
 
 ## Agradecimientos
