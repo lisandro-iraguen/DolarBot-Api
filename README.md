@@ -15,7 +15,7 @@
 ## Descripción
 **DolarBot-API** es la aplicación *backend* de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un *fork* de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).  
 
-*Nota: La API hosteada en https://dolarbot-api.herokuapp.com/ es una API privada, utilizada únicamente por [DolarBot](https://github.com/guidospadavecchia/DolarBot). Es por esto que al consultar cualquier endpoint devolverá un código `403`. Para utilizar **DolarBot-API** de forma pública es necesario deployar tu propia instancia y realizar la configuración según se explica continuación*.
+*Nota: La API hosteada en https://dolarbot-api.herokuapp.com/ es una API privada, utilizada únicamente por [DolarBot](https://top.gg/bot/752669185053818941). Es por esto que al consultar cualquier endpoint devolverá un código `403`. Para utilizar **DolarBot-API** de forma pública es necesario deployar tu propia instancia y realizar la configuración según se explica continuación*.
 
 ## Configuración
 1. Configurar el parámetro `requiresApiKey` dentro del archivo `package.json`. Si se desea utilizar la API de forma pública, se debe configurar `requiresApiKey = false`, de lo contrario, configurar `requiresApiKey = true` y crear la variable de entorno `DOLARBOT_APIKEY` en el servidor que aloja la aplicación. *Nota: La misma key debe ser enviada en el header de cada request o de lo contrario la API devolverá un código `403`.* 
