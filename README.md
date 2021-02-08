@@ -2,11 +2,8 @@
   <img src="https://github.com/guidospadavecchia/DolarBot-Api/blob/master/design/logo_dolarbot_api.png" height="200px">
 </p>
 
-<p align="center">
-<i>La API oficial de DolarBot</i>  
-</p>  
+*** 
 
-***    
 ## Status
 [![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
 [![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json) 
