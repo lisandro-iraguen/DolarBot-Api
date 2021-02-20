@@ -1,4 +1,6 @@
-const config = require('../package.json')
+const config = require('../package.json');
+const moment = require('moment-timezone');
+const timezone = 'America/Argentina/Buenos_Aires';
 
 class util {
 
@@ -35,23 +37,7 @@ class util {
     /**
      * Obtiene la fecha y hora actual formateada.
      */
-    getDateTime = () => {
-        let now = new Date();
-        let year = now.getFullYear();
-        let month = now.getMonth() + 1;
-        let day = now.getDate();
-        let hour = now.getHours();
-        let minute = now.getMinutes();
-        let second = now.getSeconds();
-        (month.toString().length == 1) ? month = '0' + month : '';
-        (day.toString().length == 1) ? day = '0' + day : '';
-        (hour.toString().length == 1) ? hour = '0' + hour : '';
-        (minute.toString().length == 1) ? minute = '0' + minute : '';
-        (second.toString().length == 1) ? second = '0' + second : '';
-
-        let dateTime = year + '/' + month + '/' + day + ' ' + hour + ':' + minute + ':' + second;
-        return dateTime;
-    }
+    getDateTime = () => moment().tz(timezone).format('yyyy/MM/DD HH:mm:ss');    
 
     /**
      * Formatea un texto numérico a formato moneda.
@@ -84,10 +70,10 @@ class util {
 
         const valores = {
             fecha: this.getDateTime(),
-            meses
+            meses,
         }
 
-        return valores
+        return valores;
     }
 }
 

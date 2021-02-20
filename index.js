@@ -1,26 +1,26 @@
-const express = require('express')
-const helmet = require('helmet')
-const bodyParser = require('body-parser')
-const router = require('./routes/router')
-const PORT = process.env.PORT || 7070
+const express = require('express');
+const helmet = require('helmet');
+const bodyParser = require('body-parser');
+const router = require('./routes/router');
+const PORT = process.env.PORT || 7070;
 const app = express();
 
-const auth = require('./util/auth')
+const auth = require('./util/auth');
 const authInstance = new auth();
 
-const util = require('./util/util')
+const util = require('./util/util');
 const utilInstance = new util();
 
-app.get('/', utilInstance.getHome)
+app.get('/', utilInstance.getHome);
 
 // Settings
 app.set('port', PORT);
-app.use('/favicon.ico', express.static('favicon.ico'))
-app.use(helmet())
+app.use('/favicon.ico', express.static('favicon.ico'));
+app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(authInstance.validateApiKey);
-app.use('/', router)
+app.use('/', router);
 
 // CORS
 app.use('*', utilInstance.setCorsHeaders);
