@@ -26,6 +26,7 @@
 | ------ | ------ | ------ |
 | GET | /api/dolar/oficial | Cotización del dólar oficial |
 | GET | /api/dolar/blue | Cotización dólar blue |
+| GET | /api/dolar/ahorro | Cotización dólar ahorro |
 | GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
 | GET | /api/dolar/promedio | Cotización dólar promedio |
 | GET | /api/dolar/bolsa | Cotización dólar bolsa |

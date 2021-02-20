@@ -40,6 +40,7 @@ router.get('/api/status', async (_req, res, _next) => res.sendStatus(200));
  * @description Rutas dolar
  */
 router.get('/api/dolar/oficial', dolarInstance.getDolarOficial);
+router.get('/api/dolar/ahorro', dolarInstance.getDolarAhorro);
 router.get('/api/dolar/blue', dolarInstance.getDolarBlue);
 router.get('/api/dolar/contadoliqui', dolarInstance.getContadoConLiqui);
 router.get('/api/dolar/promedio', dolarInstance.getDolarPromedio);

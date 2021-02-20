@@ -4,6 +4,7 @@
   "main": "index.js",
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
+  "taxPercent": 65,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",

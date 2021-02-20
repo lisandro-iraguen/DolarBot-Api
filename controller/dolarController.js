@@ -1,3 +1,4 @@
+const config = require('../package.json');
 const util = require("../util/util")
 
 class dolarController {
@@ -10,7 +11,7 @@ class dolarController {
      * @description Obtener el valor del dolar oficial
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarOficial = async (req, res) => {
+    getDolarOficial = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
@@ -25,12 +26,37 @@ class dolarController {
         }
     }
 
+    /**
+     * @description Obtener el valor del dolar ahorro
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getDolarAhorro = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent);
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatNumber(data.cotiza.Dolar.casa344.compra._text),
+                venta: this.util.formatNumber(data.cotiza.Dolar.casa344.venta._text)
+            }
+
+            if(valores.venta !== '?' && !isNaN(taxPercent) && taxPercent > 0) {
+                valores.venta = (valores.venta * (1 + (taxPercent / 100))).toFixed(2);
+            }
+
+            res.send(valores);
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(500)
+        }
+    }
+
 
     /**
      * @description Obtener el valor del dolar blue
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBlue = async (req, res) => {
+    getDolarBlue = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
@@ -51,7 +77,7 @@ class dolarController {
      * @description Obtener el valor del dolar contado con liqui
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getContadoConLiqui = async (req, res) => {
+    getContadoConLiqui = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
@@ -72,7 +98,7 @@ class dolarController {
      * @description Obtener el valor del dolar promedio
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarPromedio = async (req, res) => {
+    getDolarPromedio = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
@@ -93,7 +119,7 @@ class dolarController {
      * @description Obtener el valor del dolar bolsa
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-    getDolarBolsa = async (req, res) => {
+    getDolarBolsa = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
@@ -113,7 +139,7 @@ class dolarController {
      * @description Obtiene la evolución anual del valor del dolar oficial
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
-    getEvolucionDolarOficial = async (req, res) => {
+    getEvolucionDolarOficial = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
@@ -129,7 +155,7 @@ class dolarController {
      * @description Obtiene la evolución anual del valor del dolar blue
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
-    getEvolucionDolarBlue = async (req, res) => {
+    getEvolucionDolarBlue = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.blue.anio)
