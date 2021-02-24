@@ -1,4 +1,3 @@
-const config = require('../package.json');
 const util = require("../util/util")
 
 class dolarController {
@@ -33,15 +32,10 @@ class dolarController {
     getDolarAhorro = async (_req, res) => {
         try {
             const data = await this.dolarSiService.getInfoDolar();
-            const taxPercent = parseInt(config.taxPercent);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text)
-            }
-
-            if(valores.venta !== '?' && !isNaN(taxPercent) && taxPercent > 0) {
-                valores.venta = (valores.venta * (1 + (taxPercent / 100))).toFixed(2);
+                venta: this.util.formatCurrencyWithTaxes(data.cotiza.Dolar.casa344.venta._text)
             }
 
             res.send(valores);
