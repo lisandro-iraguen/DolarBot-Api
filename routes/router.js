@@ -95,7 +95,9 @@ router.get('/api/evolucion/dolar/oficial', dolarInstance.getEvolucionDolarOficia
 router.get('/api/evolucion/dolar/blue', dolarInstance.getEvolucionDolarBlue);
 router.get('/api/evolucion/dolar/ahorro', dolarInstance.getEvolucionDolarAhorro);
 router.get('/api/evolucion/real/oficial', realInstance.getEvolucionReal);
+router.get('/api/evolucion/real/ahorro', realInstance.getEvolucionRealAhorro);
 router.get('/api/evolucion/euro/oficial', euroInstance.getEvolucionEuro);
+router.get('/api/evolucion/euro/ahorro', euroInstance.getEvolucionEuroAhorro);
 
 /**
  * @description Rutas metales

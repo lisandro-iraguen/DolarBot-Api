@@ -9,6 +9,7 @@ function _sendResponseData(data, response, util) {
         const valores = {
             fecha: util.getDateTime(),
             ars: util.formatCurrency(data.ars.toString()),
+            arsTaxed: util.formatCurrencyWithTaxes(data.ars.toString()),
             usd: util.formatCurrency(data.usd.toString())
         }
         response.send(valores)
