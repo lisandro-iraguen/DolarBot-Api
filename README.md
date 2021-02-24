@@ -46,11 +46,23 @@
 | GET | /api/dolar/bancos/pampa | Cotización del Banco de La Pampa |
 
 #### Respuestas
+
+###### Genéricos
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
     compra: "68.07",
     venta: "73.07"
+}
+```
+
+###### Bancos
+```javascript
+{
+    fecha: "2020/06/21 23:26:42",
+    compra: "89.02",
+    venta: "92.02",
+    ventaAhorro: "156.78",
 }
 ```
 
@@ -123,8 +135,9 @@
 ```javascript
 {
     fecha: "2021/01/02 01:32:42",
-    ars: "2497478.00",
-    usd: "29342.00",
+    ars: "4467101.00",
+    arsTaxed: "7370716.65",
+    usd: "49817.00",
 }
 ```
 
@@ -174,9 +187,12 @@
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
 | GET | /api/evolucion/dolar/oficial | Evolución mensual anualizada del Dólar oficial |
+| GET | /api/evolucion/dolar/ahorro | Evolución mensual anualizada del Dólar ahorro |
 | GET | /api/evolucion/dolar/blue | Evolución mensual anualizada del Dólar blue |
 | GET | /api/evolucion/real/oficial | Evolución mensual anualizada del Real oficial |
+| GET | /api/evolucion/real/ahorro | Evolución mensual anualizada del Real ahorro |
 | GET | /api/evolucion/euro/oficial | Evolución mensual anualizada del Euro oficial |
+| GET | /api/evolucion/euro/ahorro | Evolución mensual anualizada del Euro ahorro |
 
 #### Respuestas
 ```javascript
