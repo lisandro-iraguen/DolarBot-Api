@@ -15,9 +15,9 @@ class vzlaController {
             const data = await this.dolarTodayService.getInfoVzla();
             const valores = {
                 fecha: this.util.getDateTime(),
-                paralelo: this.util.formatNumber(data.USD.dolartoday.toString()),
-                bancos: this.util.formatNumber(data.USD.promedio_real.toString()),
-                cucuta: this.util.formatNumber(data.USD.efectivo_cucuta.toString()),
+                paralelo: this.util.formatCurrency(data.USD.dolartoday.toString()),
+                bancos: this.util.formatCurrency(data.USD.promedio_real.toString()),
+                cucuta: this.util.formatCurrency(data.USD.efectivo_cucuta.toString()),
             }
 
             res.send(valores)
@@ -36,9 +36,9 @@ class vzlaController {
             const data = await this.dolarTodayService.getInfoVzla();
             const valores = {
                 fecha: this.util.getDateTime(),
-                paralelo: this.util.formatNumber(data.EUR.dolartoday.toString()),
-                bancos: this.util.formatNumber(data.EUR.promedio_real.toString()),
-                cucuta: this.util.formatNumber(data.EUR.efectivo_cucuta.toString()),
+                paralelo: this.util.formatCurrency(data.EUR.dolartoday.toString()),
+                bancos: this.util.formatCurrency(data.EUR.promedio_real.toString()),
+                cucuta: this.util.formatCurrency(data.EUR.efectivo_cucuta.toString()),
             }
 
             res.send(valores)

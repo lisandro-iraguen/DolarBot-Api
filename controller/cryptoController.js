@@ -4,12 +4,12 @@ const util = require("../util/util")
  * Envía los datos de la respuesta de forma estandarizada.
  * @returns Un objeto con el valor en pesos y dólares, y la fecha y hora de la consulta
  */
-function sendResponseData(data, response, util) {
+function _sendResponseData(data, response, util) {
     if(data != null) {
         const valores = {
             fecha: util.getDateTime(),
-            ars: util.formatNumber(data.ars.toString()),
-            usd: util.formatNumber(data.usd.toString())
+            ars: util.formatCurrency(data.ars.toString()),
+            usd: util.formatCurrency(data.usd.toString())
         }
         response.send(valores)
     }
@@ -28,7 +28,7 @@ class cryptoController {
     getBitcoin = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getBitcoin();
-            sendResponseData(data, res, this.util);
+            _sendResponseData(data, res, this.util);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -42,7 +42,7 @@ class cryptoController {
     getEthereum = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getEthereum();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -56,7 +56,7 @@ class cryptoController {
     getLitecoin = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getLitecoin();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -70,7 +70,7 @@ class cryptoController {
     getBitcoinCash = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getBitcoinCash();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -84,7 +84,7 @@ class cryptoController {
     getMonero = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getMonero();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -98,7 +98,7 @@ class cryptoController {
     getRipple = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getRipple();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -112,7 +112,7 @@ class cryptoController {
     getDash = async (_req, res) => {
         try {
             const data = await this.coinGeckoService.getDash();
-            sendResponseData(data, res, this.util);            
+            _sendResponseData(data, res, this.util);            
         } catch (e) {
             res.sendStatus(500)
             console.log(e)

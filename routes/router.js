@@ -93,6 +93,7 @@ router.get('/api/bcra/circulante', bcraInstance.getCirculante);
  */
 router.get('/api/evolucion/dolar/oficial', dolarInstance.getEvolucionDolarOficial);
 router.get('/api/evolucion/dolar/blue', dolarInstance.getEvolucionDolarBlue);
+router.get('/api/evolucion/dolar/ahorro', dolarInstance.getEvolucionDolarAhorro);
 router.get('/api/evolucion/real/oficial', realInstance.getEvolucionReal);
 router.get('/api/evolucion/euro/oficial', euroInstance.getEvolucionEuro);
 

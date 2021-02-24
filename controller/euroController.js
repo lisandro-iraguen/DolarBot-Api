@@ -15,8 +15,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa176.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa176.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa176.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa176.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -34,8 +34,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa356.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa356.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa356.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa356.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -53,8 +53,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa358.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa358.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa358.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa358.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -72,8 +72,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa359.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa359.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa359.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa359.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -91,8 +91,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa360.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa360.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa360.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa360.venta._text)
             }
             res.send(valores)
         } catch (e) {
@@ -110,8 +110,8 @@ class euroController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Euro.casa361.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Euro.casa361.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa361.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa361.venta._text)
             }
             res.send(valores)
         } catch (e) {

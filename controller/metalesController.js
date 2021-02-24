@@ -15,7 +15,7 @@ class metalesController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                valor: this.util.formatNumber(data.cotiza.Metales.casa301.compra._text),
+                valor: this.util.formatCurrency(data.cotiza.Metales.casa301.compra._text),
                 unidad: 'Onza',
                 moneda: 'USD'
             }
@@ -36,7 +36,7 @@ class metalesController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                valor: this.util.formatNumber(data.cotiza.Metales.casa299.compra._text),
+                valor: this.util.formatCurrency(data.cotiza.Metales.casa299.compra._text),
                 unidad: 'Onza',
                 moneda: 'USD'
             }
@@ -57,7 +57,7 @@ class metalesController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                valor: this.util.formatNumber(data.cotiza.Metales.casa300.compra._text),
+                valor: this.util.formatCurrency(data.cotiza.Metales.casa300.compra._text),
                 unidad: 'Tonelada',
                 moneda: 'USD'
             }

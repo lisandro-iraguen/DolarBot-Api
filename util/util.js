@@ -44,10 +44,22 @@ class util {
      * @param {string} value Texto que contiene el valor numérico a convertir.
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
      */
-    formatNumber = (value, decimalPlaces) => {
+    formatCurrency = (value, decimalPlaces) => {
         let decimals = decimalPlaces || 2;
-        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value)
-        return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : '?'
+        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
+        return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : '?';
+    }
+
+    /**
+     * Formatea un texto que representa un monto a formato moneda y aplica los impuestos configurados.
+     * @param {string} value Texto que contiene el valor numérico a convertir.
+     * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
+     */
+    formatCurrencyWithTaxes = (value, decimalPlaces) => {
+        const taxPercent = parseInt(config.taxPercent);
+        let decimals = decimalPlaces || 2;
+        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
+        return !isNaN(convertedValue) ? (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals) : '?';
     }
 
     /**
@@ -63,7 +75,33 @@ class util {
             meses.push({
                 "anio": (i < mesActual ? now.getFullYear() : now.getFullYear() - 1).toString(),
                 "mes": i.toString(),
-                "valor": this.formatNumber(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text).toString()
+                "valor": this.formatCurrency(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text).toString()
+            })
+        }
+        meses = meses.sort((a, b) => a.anio - b.anio)
+
+        const valores = {
+            fecha: this.getDateTime(),
+            meses,
+        }
+
+        return valores;
+    }
+
+    /**
+     * Devuelve un objeto que contiene los valores de la cotización anual por mes con impuestos aplicados.
+     * @param {object} evolucionAnual Objeto que contiene el valor de cada mes del año.
+     */
+    getEvolucionWithTaxes = (evolucionAnual) => {
+        const now = new Date()
+        const mesActual = now.getMonth() + 1
+
+        let meses = []
+        for (let i = 1; i <= Object.keys(evolucionAnual).length; i++) {
+            meses.push({
+                "anio": (i < mesActual ? now.getFullYear() : now.getFullYear() - 1).toString(),
+                "mes": i.toString(),
+                "valor": this.formatCurrencyWithTaxes(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text).toString()
             })
         }
         meses = meses.sort((a, b) => a.anio - b.anio)

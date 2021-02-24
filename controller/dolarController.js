@@ -16,8 +16,8 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa344.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text),
             }
             res.send(valores)
         } catch (e) {
@@ -36,8 +36,8 @@ class dolarController {
             const taxPercent = parseInt(config.taxPercent);
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa344.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text)
             }
 
             if(valores.venta !== '?' && !isNaN(taxPercent) && taxPercent > 0) {
@@ -61,8 +61,8 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.Dolar.casa380.compra._text),
-                venta: this.util.formatNumber(data.cotiza.Dolar.casa380.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.Dolar.casa380.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Dolar.casa380.venta._text)
             }
 
             res.send(valores)
@@ -82,8 +82,8 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.valores_principales.casa312.compra._text),
-                venta: this.util.formatNumber(data.cotiza.valores_principales.casa312.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.valores_principales.casa312.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.valores_principales.casa312.venta._text)
             }
 
             res.send(valores)
@@ -103,8 +103,8 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.cotizador.casa302.compra._text),
-                venta: this.util.formatNumber(data.cotiza.cotizador.casa302.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.cotizador.casa302.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.cotizador.casa302.venta._text)
             }
 
             res.send(valores)
@@ -124,8 +124,8 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatNumber(data.cotiza.valores_principales.casa313.compra._text),
-                venta: this.util.formatNumber(data.cotiza.valores_principales.casa313.venta._text)
+                compra: this.util.formatCurrency(data.cotiza.valores_principales.casa313.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.valores_principales.casa313.venta._text)
             }
 
             res.send(valores)
@@ -143,6 +143,22 @@ class dolarController {
         try {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
+
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }
+
+    /**
+     * @description Obtiene la evolución anual del valor del dolar ahorro
+     * @returns Un objeto con el valor promedio por mes, el mes y el año.
+     */
+    getEvolucionDolarAhorro = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = this.util.getEvolucionWithTaxes(data.cotiza.evolucion_dolar.oficial.anio)
 
             res.send(valores)
         } catch (e) {
