@@ -78,15 +78,6 @@
 
 #### Respuestas
 
-###### Genéricos
-```javascript
-{
-    fecha: "2020/06/21 23:26:42",
-    compra: "126.45",
-    venta: "134.67"
-}
-```
-
 ###### Bancos
 ```javascript
 {
@@ -105,15 +96,6 @@
 | GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |
 
 #### Respuestas
-
-###### Genéricos
-```javascript
-{
-    fecha: "2020/06/21 23:26:42",
-    compra: "13.18",
-    venta: "14.96"
-}
-```
 
 ###### Bancos
 ```javascript
