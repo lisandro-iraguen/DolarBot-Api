@@ -13,7 +13,7 @@ fetchData = async (coinId, apiClient, response) => {
         return value.data[coinId];
     }
     else{
-        response.sendStatus(500)
+        response.sendStatus(500);
         console.log(value.message);
         return null;
     }
@@ -31,86 +31,37 @@ class coinGeckoService {
     /**
      * @description Obtiene la cotización del Bitcoin (BTC) contra peso y dólar
      */
-    getBitcoin = async (_req, res) => {
-        try {
-            return await fetchData('bitcoin', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getBitcoin = async (_req, res) => await fetchData('bitcoin', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del Bitcoin Cash (BCH) contra peso y dólar
      */
-    getBitcoinCash = async (_req, res) => {
-        try {
-            return await fetchData('bitcoin-cash', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getBitcoinCash = async (_req, res) => await fetchData('bitcoin-cash', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del Ethereum (ETC) contra peso y dólar
      */
-    getEthereum = async (_req, res) => {
-        try {
-            return await fetchData('ethereum', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getEthereum = async (_req, res) => await fetchData('ethereum', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del Litecoin (LTC) contra peso y dólar
      */
-    getLitecoin = async (_req, res) => {
-        try {
-            return await fetchData('litecoin', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getLitecoin = async (_req, res) => await fetchData('litecoin', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del Monero (XMR) contra peso y dólar
      */
-    getMonero = async (_req, res) => {
-        try {
-            return await fetchData('monero', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getMonero = async (_req, res) => await fetchData('monero', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del Ripple (XRP) contra peso y dólar
      */
-    getRipple = async (_req, res) => {
-        try {
-            return await fetchData('ripple', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getRipple = async (_req, res) => await fetchData('ripple', this.coinGeckoClient, res);
 
     /**
      * @description Obtiene la cotización del DASH contra peso y dólar
      */
-    getDash = async (_req, res) => {
-        try {
-            return await fetchData('dash', this.coinGeckoClient, res);
-        } catch(e) {
-            res.sendStatus(500)
-            console.log(e)
-        }
-    }
+    getDash = async (_req, res) => await fetchData('dash', this.coinGeckoClient, res);
 }
 
 module.exports = coinGeckoService
