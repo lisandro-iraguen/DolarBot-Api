@@ -1,14 +1,20 @@
 const express = require('express');
+const config = require('../package.json');
+const NodeCache = require('node-cache');
 const router = express.Router();
+
+//Cache
+const cacheTimeToLive = !isNaN(config.cacheTTLSeconds) && config.cacheTTLSeconds > 0 ? config.cacheTTLSeconds : 0;
+const cache = new NodeCache({ stdTTL: cacheTimeToLive, checkperiod: cacheTimeToLive * 0.2, useClones: false });
 
 //Services
 const dolarSiService = require('../services/dolarSiService');
 const dolarTodayService = require('../services/dolarTodayService');
 const coinGeckoService = require('../services/coinGeckoService');
 
-const dolarSiServiceInstance = new dolarSiService();
-const dolarTodayServiceInstance = new dolarTodayService();
-const coinGeckoInstance = new coinGeckoService();
+const dolarSiServiceInstance = new dolarSiService(cache);
+const dolarTodayServiceInstance = new dolarTodayService(cache);
+const coinGeckoInstance = new coinGeckoService(cache);
 
 //Controllers
 const dolarController = require('../controller/dolarController');
