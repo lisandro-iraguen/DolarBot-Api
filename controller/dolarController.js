@@ -18,7 +18,7 @@ class dolarController {
                 compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text),
             }
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             console.log(e)
             res.sendStatus(500)
@@ -59,7 +59,7 @@ class dolarController {
                 venta: this.util.formatCurrency(data.cotiza.Dolar.casa380.venta._text)
             }
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -80,7 +80,7 @@ class dolarController {
                 venta: this.util.formatCurrency(data.cotiza.valores_principales.casa312.venta._text)
             }
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -101,7 +101,7 @@ class dolarController {
                 venta: this.util.formatCurrency(data.cotiza.cotizador.casa302.venta._text)
             }
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -122,7 +122,7 @@ class dolarController {
                 venta: this.util.formatCurrency(data.cotiza.valores_principales.casa313.venta._text)
             }
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -138,7 +138,7 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -154,7 +154,7 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucionWithTaxes(data.cotiza.evolucion_dolar.oficial.anio)
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
@@ -170,7 +170,7 @@ class dolarController {
             const data = await this.dolarSiService.getInfoDolar()
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.blue.anio)
 
-            res.send(valores)
+            res.send(valores);
         } catch (e) {
             res.sendStatus(500)
             console.log(e)
