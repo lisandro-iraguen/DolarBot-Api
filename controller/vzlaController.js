@@ -18,6 +18,7 @@ class vzlaController {
                 paralelo: this.util.formatCurrency(data.USD.dolartoday.toString()),
                 bancos: this.util.formatCurrency(data.USD.promedio_real.toString()),
                 cucuta: this.util.formatCurrency(data.USD.efectivo_cucuta.toString()),
+                moneda: 'USD',
             }
 
             res.send(valores)
@@ -39,6 +40,7 @@ class vzlaController {
                 paralelo: this.util.formatCurrency(data.EUR.dolartoday.toString()),
                 bancos: this.util.formatCurrency(data.EUR.promedio_real.toString()),
                 cucuta: this.util.formatCurrency(data.EUR.efectivo_cucuta.toString()),
+                moneda: 'EUR',
             }
 
             res.send(valores)
