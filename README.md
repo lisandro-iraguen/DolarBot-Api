@@ -135,7 +135,7 @@
 | GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
 | GET | /api/crypto/ripple | Valor del Ripple (XRP) |
 | GET | /api/crypto/dash | Valor del DASH (DASH) |
-| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada (debe ser un ID válido de [CoinGecko](https://api.coingecko.com/api/v3/coins/list)) |
+| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada.<br />Debe ser un ID válido de [CoinGecko](https://api.coingecko.com/api/v3/coins/list) |
 
 #### Respuestas
 
