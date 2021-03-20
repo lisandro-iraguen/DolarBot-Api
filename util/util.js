@@ -47,7 +47,15 @@ class util {
     formatCurrency = (value, decimalPlaces) => {
         let decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        return !isNaN(convertedValue) ? convertedValue.toFixed(decimals) : '?';
+        if(!isNaN(convertedValue)){
+            if(convertedValue < 0.01) {
+                convertedValue = Math.ceil(convertedValue * 100) / 100;
+            }
+            return convertedValue.toFixed(decimals);
+        }
+        else{
+            return '?';
+        }
     }
 
     /**
@@ -59,7 +67,15 @@ class util {
         const taxPercent = parseInt(config.taxPercent);
         let decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        return !isNaN(convertedValue) ? (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals) : '?';
+        if(!isNaN(convertedValue)){
+            if(convertedValue < 0.01) {
+                convertedValue = Math.ceil(convertedValue * 100) / 100;
+            }
+            return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
+        }
+        else{
+            return '?';
+        }
     }
 
     /**

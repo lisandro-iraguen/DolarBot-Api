@@ -5,16 +5,15 @@ const util = require("../util/util")
  * @returns Un objeto con el valor en pesos y dólares, y la fecha y hora de la consulta
  */
 function _sendResponseData(data, response, util) {
-    if(data != null) {
-        const valores = {
-            fecha: util.getDateTime(),
-            ars: util.formatCurrency(data.ars.toString()),
-            arsTaxed: util.formatCurrencyWithTaxes(data.ars.toString()),
-            usd: util.formatCurrency(data.usd.toString()),
-            code: data.code,
-        }
-        response.send(valores);
+    const valores = {
+        name: data.name,
+        code: data.code,
+        fecha: util.getDateTime(),
+        ars: util.formatCurrency(data.ars.toString()),
+        arsTaxed: util.formatCurrencyWithTaxes(data.ars.toString()),
+        usd: util.formatCurrency(data.usd.toString()),
     }
+    response.send(valores);
 }
 
 class cryptoController {
@@ -24,17 +23,51 @@ class cryptoController {
     }
 
     /**
+     * @description Obtener la cotizacion de la moneda especificada. El código debe ser un ID válido de CoinGecko (https://www.coingecko.com/en/api#explore-api).
+     * @returns Un objeto con el valor en pesos y dólares, y la fecha y hora de la consulta
+     */
+    getCoin = async (req, res) => {
+        try {
+            let coinId = req.params.coinId;
+            if(coinId != null && coinId != '') {
+                const data = await this.coinGeckoService.getCoin(coinId);  
+                if(data != null) {
+                    _sendResponseData(data, res, this.util);
+                }
+                else{
+                    res.sendStatus(500);
+                }
+            }
+            else{
+                res.sendStatus(400);
+            }
+        } catch (e) {
+            res.sendStatus(500);
+            console.log(e);
+        }
+    }
+
+    /**
      * @description Obtener la cotizacion del Bitcoin (BTC)
      * @returns Un objeto con el valor en pesos y dólares, y la fecha y hora de la consulta
      */
     getBitcoin = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getBitcoin();
-            data.code = 'BTC';
-            _sendResponseData(data, res, this.util);
+            let data = await this.coinGeckoService.getBitcoin();
+            if(data != null){
+                data = {
+                    name: 'Bitcoin',
+                    code: 'BTC',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);
+            }
+            else{
+                res.sendStatus(500);
+            }
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -44,12 +77,21 @@ class cryptoController {
      */
     getEthereum = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getEthereum();
-            data.code = 'ETH';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getEthereum();
+            if(data != null){
+                data = {
+                    name: 'Ethereum',
+                    code: 'ETH',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);
+            }
+            else{
+                res.sendStatus(500);
+            }
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -59,12 +101,21 @@ class cryptoController {
      */
     getLitecoin = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getLitecoin();
-            data.code = 'LTC';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getLitecoin();
+            if(data != null){
+                data = {
+                    name: 'Litecoin',
+                    code: 'LTC',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);  
+            }
+            else{
+                res.sendStatus(500);
+            }
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -74,12 +125,21 @@ class cryptoController {
      */
     getBitcoinCash = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getBitcoinCash();
-            data.code = 'BCH';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getBitcoinCash();
+            if(data != null){
+                data = {
+                    name: 'Bitcoin Cash',
+                    code: 'BCH',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);  
+            }
+            else{
+                res.sendStatus(500);
+            }
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -89,12 +149,21 @@ class cryptoController {
      */
     getMonero = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getMonero();
-            data.code = 'XMR';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getMonero();
+            if(data != null){
+                data = {
+                    name: 'Monero',
+                    code: 'XMR',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);
+            }
+            else{
+                res.sendStatus(500);
+            }
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -104,12 +173,21 @@ class cryptoController {
      */
     getRipple = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getRipple();
-            data.code = 'XRP';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getRipple();
+            if(data != null){
+                data = {
+                    name: 'Ripple',
+                    code: 'XRP',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);
+            }
+            else{
+                res.sendStatus(500);
+            }      
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 
@@ -119,12 +197,21 @@ class cryptoController {
      */
     getDash = async (_req, res) => {
         try {
-            const data = await this.coinGeckoService.getDash();
-            data.code = 'DASH';
-            _sendResponseData(data, res, this.util);            
+            let data = await this.coinGeckoService.getDash();
+            if(data != null){
+                data = {
+                    name: 'DASH',
+                    code: 'DASH',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);
+            }
+            else{
+                res.sendStatus(500);
+            } 
         } catch (e) {
-            res.sendStatus(500)
-            console.log(e)
+            res.sendStatus(500);
+            console.log(e);
         }
     }
 }

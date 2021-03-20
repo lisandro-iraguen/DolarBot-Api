@@ -122,6 +122,7 @@ router.get('/api/crypto/monero', cryptoInstance.getMonero);
 router.get('/api/crypto/litecoin', cryptoInstance.getLitecoin);
 router.get('/api/crypto/ripple', cryptoInstance.getRipple);
 router.get('/api/crypto/dash', cryptoInstance.getDash);
+router.get('/api/crypto/:coinId', cryptoInstance.getCoin);
 
 /**
  * @description Rutas Venezuela

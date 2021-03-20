@@ -135,16 +135,18 @@
 | GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
 | GET | /api/crypto/ripple | Valor del Ripple (XRP) |
 | GET | /api/crypto/dash | Valor del DASH (DASH) |
+| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada (debe ser un ID válido de [CoinGecko](https://api.coingecko.com/api/v3/coins/list)) |
 
 #### Respuestas
 
 ```javascript
 {
+    name: "Bitcoin",
+    code: "BTC",
     fecha: "2021/01/02 01:32:42",
     ars: "4467101.00",
     arsTaxed: "7370716.65",
-    usd: "49817.00",
-    code: "BTC"
+    usd: "49817.00"
 }
 ```
 
