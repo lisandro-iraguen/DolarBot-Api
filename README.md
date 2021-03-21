@@ -136,7 +136,7 @@
 | GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
 | GET | /api/crypto/ripple | Valor del Ripple (XRP) |
 | GET | /api/crypto/dash | Valor del DASH (DASH) |
-| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada (debe ser un código válido de la lista de criptomonedas) |
+| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada.<br />Debe ser un código válido de la lista de criptomonedas |
 
 #### Respuestas
 
