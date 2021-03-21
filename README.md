@@ -128,6 +128,7 @@
 ### Crypto
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
+| GET | /api/crypto/list | Obtiene la lista de criptomonedas disponibles para su consulta |
 | GET | /api/crypto/bitcoin | Valor del Bitcoin (BTC) |
 | GET | /api/crypto/bitcoincash | Valor del Bitcoin Cash (BCH) |
 | GET | /api/crypto/ethereum | Valor del Ethereum (ETH) |
@@ -135,10 +136,32 @@
 | GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
 | GET | /api/crypto/ripple | Valor del Ripple (XRP) |
 | GET | /api/crypto/dash | Valor del DASH (DASH) |
-| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada (debe ser un ID válido de [CoinGecko](https://api.coingecko.com/api/v3/coins/list)) |
+| GET | /api/crypto/`<id>` | Valor de la criptomoneda especificada (debe ser un código válido de la lista de criptomonedas) |
 
 #### Respuestas
 
+###### Lista de criptomonedas
+```javascript
+[
+    {
+        code: "btc",
+        name: "bitcoin"
+    },
+    {
+        code: "ada",
+        name: "cardano"
+    },
+
+    ...
+
+    {
+        code: "eth",
+        name: "Ethereum"
+    }
+]
+```
+
+###### Moneda
 ```javascript
 {
     name: "Bitcoin",

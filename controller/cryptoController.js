@@ -22,13 +22,23 @@ class cryptoController {
         this.util = new util();
     }
 
+    getCoinList = async (_req, res) => {
+        try{
+            let coinList = await this.coinGeckoService.getCoinList();
+            res.send(coinList);
+        } catch (e) {
+            res.sendStatus(500);
+            console.log(e);
+        }
+    }
+
     /**
      * @description Obtener la cotizacion de la moneda especificada. El código debe ser un ID válido de CoinGecko (https://www.coingecko.com/en/api#explore-api).
      * @returns Un objeto con el valor en pesos y dólares, y la fecha y hora de la consulta
      */
     getCoin = async (req, res) => {
         try {
-            let coinId = req.params.coinId;
+            let coinId = req.params.coinId.toLowerCase();
             if(coinId != null && coinId != '') {
                 const data = await this.coinGeckoService.getCoin(coinId);  
                 if(data != null) {

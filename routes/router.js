@@ -115,6 +115,7 @@ router.get('/api/metales/cobre', metalesInstance.getCobre);
 /**
  * @description Rutas Cryptomonedas
  */
+router.get('/api/crypto/list', cryptoInstance.getCoinList)
 router.get('/api/crypto/bitcoin', cryptoInstance.getBitcoin);
 router.get('/api/crypto/ethereum', cryptoInstance.getEthereum);
 router.get('/api/crypto/bitcoincash', cryptoInstance.getBitcoinCash);

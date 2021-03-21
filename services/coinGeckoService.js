@@ -25,7 +25,7 @@ loadCoinList = async (apiClient, cache) => {
  */
 fetchFromCoinList = async (coinId, apiClient, cache) => {
     try{
-        if(coinList.length > 0)
+        if(coinList != null && coinList.length > 0)
         {
             let coin = coinList.find(x => x.id === coinId);
             if(coin && coin != null) {                
@@ -85,6 +85,18 @@ class coinGeckoService {
         this.coinGeckoClient = new CoinGecko();
         this.cache = cache;
         loadCoinList(this.coinGeckoClient, this.cache);
+    }
+
+    /**
+     * @description Obtiene la lista de cryptomonedas soportadas
+     */
+    getCoinList = async () => {
+        if(coinList != null) {
+            return coinList.filter(x => x.id != null && x.id != '').map(x => ({ code: x.id, name: x.name, }));
+        }
+        else{
+            return [];
+        }
     }
 
     /**
