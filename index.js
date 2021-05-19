@@ -17,8 +17,8 @@ app.get('/', utilInstance.getHome);
 app.set('port', PORT);
 app.use('/favicon.ico', express.static('favicon.ico'));
 app.use(helmet());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(authInstance.validateApiKey);
 app.use('/', router);
 
