@@ -67,13 +67,15 @@ router.get('/api/dolar/bancos/supervielle', bancoInstance.getDolarSupervielle);
 router.get('/api/dolar/bancos/patagonia', bancoInstance.getDolarPatagonia);
 router.get('/api/dolar/bancos/comafi', bancoInstance.getDolarComafi);
 router.get('/api/dolar/bancos/nacion', bancoInstance.getDolarNacion);
-router.get('/api/dolar/bancos/bind', bancoInstance.getDolarBIND);
 router.get('/api/dolar/bancos/chaco', bancoInstance.getDolarChaco);
 router.get('/api/dolar/bancos/pampa', bancoInstance.getDolarPampa);
 router.get('/api/dolar/bancos/bancor', bancoInstance.getDolarBancor);
+router.get('/api/dolar/bancos/provincia', bancoInstance.getDolarProvincia);
+router.get('/api/dolar/bancos/icbc', bancoInstance.getDolarICBC);
+router.get('/api/dolar/bancos/reba', bancoInstance.getDolarRebanking);
 
 /**
- * @description Rutas euro
+ * @description Rutas bancos euro
  */
 router.get('/api/euro/bancos/nacion', euroInstance.getEuroNacion);
 router.get('/api/euro/bancos/galicia', euroInstance.getEuroGalicia);
@@ -81,13 +83,23 @@ router.get('/api/euro/bancos/bbva', euroInstance.getEuroBBVA);
 router.get('/api/euro/bancos/pampa', euroInstance.getEuroPampa);
 router.get('/api/euro/bancos/chaco', euroInstance.getEuroChaco);
 router.get('/api/euro/bancos/hipotecario', euroInstance.getEuroHipotecario);
+router.get('/api/euro/bancos/piano', euroInstance.getEuroPiano);
+router.get('/api/euro/bancos/santander', euroInstance.getEuroSantander);
+router.get('/api/euro/bancos/ciudad', euroInstance.getEuroCiudad);
+router.get('/api/euro/bancos/supervielle', euroInstance.getEuroSupervielle);
+router.get('/api/euro/bancos/patagonia', euroInstance.getEuroPatagonia);
+router.get('/api/euro/bancos/comafi', euroInstance.getEuroComafi);
+router.get('/api/euro/bancos/reba', euroInstance.getEuroRebanking);
 
 /**
- * @description Rutas real
+ * @description Rutas bancos real
  */
 router.get('/api/real/bancos/nacion', realInstance.getRealNacion);
 router.get('/api/real/bancos/bbva', realInstance.getRealBBVA);
 router.get('/api/real/bancos/chaco', realInstance.getRealChaco);
+router.get('/api/real/bancos/piano', realInstance.getRealPiano);
+router.get('/api/real/bancos/ciudad', realInstance.getRealCiudad);
+router.get('/api/real/bancos/supervielle', realInstance.getRealSupervielle);
 
 /**
  * @description Rutas Reservas y Circulante

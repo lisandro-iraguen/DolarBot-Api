@@ -294,6 +294,66 @@ class bancosController {
             console.log(e)
         }
     }
+
+     /**
+     * @description Obtener las cotizaciones del Banco de la Provincia de Buenos Aires
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getDolarProvincia = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa411.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa411.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa411.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }
+
+    /**
+     * @description Obtener las cotizaciones del Industrial and Commercial Bank of China (ICBC)
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getDolarICBC = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa412.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa412.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa412.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }
+
+    /**
+     * @description Obtener las cotizaciones de Rebanking
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getDolarRebanking = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa414.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa414.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa414.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }
 }
 
 module.exports = bancosController

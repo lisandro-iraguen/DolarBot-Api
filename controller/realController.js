@@ -67,6 +67,66 @@ class realController {
     }
 
     /**
+     * @description Obtener el valor del real del Banco Piano
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getRealPiano = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Real.casa445.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Real.casa445.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Real.casa445.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(500)
+        }
+    }
+
+    /**
+     * @description Obtener el valor del real del Banco Ciudad
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getRealCiudad = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Real.casa449.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Real.casa449.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Real.casa449.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(500)
+        }
+    }
+
+    /**
+     * @description Obtener el valor del real del Banco Supervielle
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getRealSupervielle = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Real.casa453.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Real.casa453.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Real.casa453.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(500)
+        }
+    }
+
+    /**
      * @description Obtiene la evolución anual del valor del real oficial
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
