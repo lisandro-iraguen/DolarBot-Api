@@ -47,6 +47,7 @@
 | GET | /api/dolar/bancos/provincia | Cotización del dólar de Banco Provincia |
 | GET | /api/dolar/bancos/icbc | Cotización del dólar de Banco ICBC |
 | GET | /api/dolar/bancos/reba | Cotización del dólar de Rebanking |
+| GET | /api/dolar/bancos/roela | Cotización del dólar de Banco Roela |
 
 #### Respuestas
 
@@ -85,6 +86,7 @@
 | GET | /api/euro/bancos/patagonia | Cotización del Euro del Banco Patagonia |
 | GET | /api/euro/bancos/comafi | Cotización del Euro del Banco Comafi |
 | GET | /api/euro/bancos/reba | Cotización del Euro de Rebanking |
+| GET | /api/euro/bancos/roela | Cotización del Euro de Banco Roela |
 
 #### Respuestas
 

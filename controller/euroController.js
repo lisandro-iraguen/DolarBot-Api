@@ -267,6 +267,26 @@ class euroController {
     }
 
     /**
+     * @description Obtener el valor del euro del Banco Roela
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getEuroRoela = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Euro.casa357.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Euro.casa357.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Euro.casa357.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            console.log(e)
+            res.sendStatus(500)
+        }
+    }
+
+    /**
      * @description Obtiene la evolución anual del valor del euro oficial
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */

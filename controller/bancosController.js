@@ -354,6 +354,26 @@ class bancosController {
             console.log(e)
         }
     }
+
+    /**
+     * @description Obtener las cotizaciones de Banco Roela
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getDolarRoela = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar()
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa337.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa337.venta._text),
+                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa337.venta._text),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }
 }
 
 module.exports = bancosController

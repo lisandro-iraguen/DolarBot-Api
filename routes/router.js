@@ -73,6 +73,7 @@ router.get('/api/dolar/bancos/bancor', bancoInstance.getDolarBancor);
 router.get('/api/dolar/bancos/provincia', bancoInstance.getDolarProvincia);
 router.get('/api/dolar/bancos/icbc', bancoInstance.getDolarICBC);
 router.get('/api/dolar/bancos/reba', bancoInstance.getDolarRebanking);
+router.get('/api/dolar/bancos/roela', bancoInstance.getDolarRoela);
 
 /**
  * @description Rutas bancos euro
@@ -90,6 +91,7 @@ router.get('/api/euro/bancos/supervielle', euroInstance.getEuroSupervielle);
 router.get('/api/euro/bancos/patagonia', euroInstance.getEuroPatagonia);
 router.get('/api/euro/bancos/comafi', euroInstance.getEuroComafi);
 router.get('/api/euro/bancos/reba', euroInstance.getEuroRebanking);
+router.get('/api/euro/bancos/roela', euroInstance.getEuroRoela);
 
 /**
  * @description Rutas bancos real
