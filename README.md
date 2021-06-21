@@ -30,20 +30,23 @@
 | GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
 | GET | /api/dolar/promedio | Cotización dólar promedio |
 | GET | /api/dolar/bolsa | Cotización dólar bolsa |
-| GET | /api/dolar/bancos/bbva | Cotización del Banco BBVA |
-| GET | /api/dolar/bancos/piano | Cotización del Banco Piano |
-| GET | /api/dolar/bancos/hipotecario | Cotización del Banco Hipotecario |
-| GET | /api/dolar/bancos/galicia | Cotización del Banco Galicia |
-| GET | /api/dolar/bancos/santander | Cotización del Banco Santander |
-| GET | /api/dolar/bancos/ciudad | Cotización del Banco Ciudad |
-| GET | /api/dolar/bancos/supervielle | Cotización del Banco Supervielle |
-| GET | /api/dolar/bancos/patagonia | Cotización del Banco Patagonia |
-| GET | /api/dolar/bancos/comafi | Cotización del Banco Comafi |
-| GET | /api/dolar/bancos/nacion | Cotización del Banco Nación |
-| GET | /api/dolar/bancos/bind | Cotización del Banco Industrial |
-| GET | /api/dolar/bancos/bancor | Cotización del Banco de Córdoba |
-| GET | /api/dolar/bancos/chaco | Cotización del Nuevo Banco del Chaco |
-| GET | /api/dolar/bancos/pampa | Cotización del Banco de La Pampa |
+| GET | /api/dolar/bancos/bbva | Cotización del dólar de Banco BBVA |
+| GET | /api/dolar/bancos/piano | Cotización del dólar de Banco Piano |
+| GET | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario |
+| GET | /api/dolar/bancos/galicia | Cotización del dólar de Banco Galicia |
+| GET | /api/dolar/bancos/santander | Cotización del dólar de Banco Santander |
+| GET | /api/dolar/bancos/ciudad | Cotización del dólar de Banco Ciudad |
+| GET | /api/dolar/bancos/supervielle | Cotización del dólar de Banco Supervielle |
+| GET | /api/dolar/bancos/patagonia | Cotización del dólar de Banco Patagonia |
+| GET | /api/dolar/bancos/comafi | Cotización del dólar de Banco Comafi |
+| GET | /api/dolar/bancos/nacion | Cotización del dólar de Banco Nación |
+| GET | /api/dolar/bancos/bind | Cotización del dólar de Banco Industrial |
+| GET | /api/dolar/bancos/bancor | Cotización del dólar de Banco de Córdoba |
+| GET | /api/dolar/bancos/chaco | Cotización del dólar de Nuevo Banco del Chaco |
+| GET | /api/dolar/bancos/pampa | Cotización del dólar de Banco de La Pampa |
+| GET | /api/dolar/bancos/provincia | Cotización del dólar de Banco Provincia |
+| GET | /api/dolar/bancos/icbc | Cotización del dólar de Banco ICBC |
+| GET | /api/dolar/bancos/reba | Cotización del dólar de Rebanking |
 
 #### Respuestas
 
@@ -75,6 +78,13 @@
 | GET | /api/euro/bancos/pampa | Cotización del Euro del Banco de La Pampa |
 | GET | /api/euro/bancos/chaco | Cotización del Euro del Nuevo Banco del Chaco |
 | GET | /api/euro/bancos/hipotecario | Cotización del Euro del Banco Hipotecario |
+| GET | /api/euro/bancos/piano | Cotización del Euro del Banco Piano |
+| GET | /api/euro/bancos/santander | Cotización del Euro del Banco Santander |
+| GET | /api/euro/bancos/ciudad | Cotización del Euro del Banco Ciudad |
+| GET | /api/euro/bancos/supervielle | Cotización del Euro del Banco Supervielle |
+| GET | /api/euro/bancos/patagonia | Cotización del Euro del Banco Patagonia |
+| GET | /api/euro/bancos/comafi | Cotización del Euro del Banco Comafi |
+| GET | /api/euro/bancos/reba | Cotización del Euro de Rebanking |
 
 #### Respuestas
 
@@ -94,6 +104,9 @@
 | GET | /api/real/bancos/nacion | Cotización del Real del Banco Nación |
 | GET | /api/real/bancos/bbva | Cotización del Real del Banco BBVA |
 | GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |
+| GET | /api/real/bancos/piano | Cotización del Banco Piano |
+| GET | /api/real/bancos/ciudad | Cotización del Banco Ciudad |
+| GET | /api/real/bancos/supervielle | Cotización del Banco Supervielle |
 
 #### Respuestas
 
