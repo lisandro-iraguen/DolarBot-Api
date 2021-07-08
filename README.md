@@ -25,8 +25,8 @@
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
 | GET | /api/dolar/oficial | Cotización del dólar oficial |
-| GET | /api/dolar/blue | Cotización dólar blue |
-| GET | /api/dolar/ahorro | Cotización dólar ahorro |
+| GET | /api/dolar/blue | Cotización del dólar blue |
+| GET | /api/dolar/ahorro | Cotización del dólar ahorro |
 | GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
 | GET | /api/dolar/promedio | Cotización dólar promedio |
 | GET | /api/dolar/bolsa | Cotización dólar bolsa |
@@ -73,6 +73,9 @@
 ### Cotizaciones del Euro
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
+| GET | /api/euro/oficial | Cotización del Euro oficial |
+| GET | /api/euro/blue | Cotización del Euro blue |
+| GET | /api/euro/ahorro | Cotización del Euro ahorro |
 | GET | /api/euro/bancos/nacion | Cotización del Euro del Banco Nación |
 | GET | /api/euro/bancos/galicia | Cotización del Euro del Banco Galicia |
 | GET | /api/euro/bancos/bbva | Cotización del Euro del Banco BBVA |
@@ -90,6 +93,15 @@
 
 #### Respuestas
 
+###### Genéricos
+```javascript
+{
+    fecha: "2021/07/08 00:24:03",
+    compra: "124.53",
+    venta: "132.41",
+}
+```
+
 ###### Bancos
 ```javascript
 {
@@ -103,6 +115,9 @@
 ### Cotizaciones del Real
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
+| GET | /api/real/oficial | Cotización del Real oficial |
+| GET | /api/real/blue | Cotización del Real blue |
+| GET | /api/real/ahorro | Cotización del Real ahorro |
 | GET | /api/real/bancos/nacion | Cotización del Real del Banco Nación |
 | GET | /api/real/bancos/bbva | Cotización del Real del Banco BBVA |
 | GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |
@@ -111,6 +126,15 @@
 | GET | /api/real/bancos/supervielle | Cotización del Banco Supervielle |
 
 #### Respuestas
+
+###### Genéricos
+```javascript
+{
+    fecha: "2021/07/08 00:24:03",
+    compra: "13.15",
+    venta: "15.67",
+}
+```
 
 ###### Bancos
 ```javascript

@@ -1,8 +1,9 @@
 const util = require("../util/util")
 
 class dolarController {
-    constructor(dolarSiService) {
+    constructor(dolarSiService, bluePyService) {
         this.dolarSiService = dolarSiService;
+        this.bluePyService = bluePyService;
         this.util = new util();
     }
 

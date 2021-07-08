@@ -1,9 +1,70 @@
 const util = require("../util/util")
 
 class euroController {
-    constructor(dolarSiService) {
-        this.dolarSiService = dolarSiService
-        this.util = new util()
+    constructor(dolarSiService, bluePyService) {
+        this.dolarSiService = dolarSiService;
+        this.bluePyService = bluePyService;
+        this.util = new util();
+    }
+
+    /**
+     * @description Obtener el valor del euro oficial
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getEuroOficial = async (_req, res) => {
+        try 
+        {
+            const data = await this.bluePyService.getEuroOficial();
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: data.compra,
+                venta: data.venta,
+            }
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del euro ahorro
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getEuroAhorro = async (_req, res) => {
+        try 
+        {
+            const data = await this.bluePyService.getEuroOficial();
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: data.compra,
+                venta: this.util.formatCurrencyWithTaxes(data.venta.toString()),
+            }
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del euro blue
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getEuroBlue = async (_req, res) => {
+        try 
+        {
+            const data = await this.bluePyService.getEuroBlue();
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: data.compra,
+                venta: data.venta,
+            }
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
     }
 
     /**
