@@ -24,7 +24,7 @@ class cryptoController {
 
     getCoinList = async (_req, res) => {
         try{
-            let coinList = await this.coinGeckoService.getCoinList();
+            const coinList = await this.coinGeckoService.getCoinList();
             res.send(coinList);
         } catch (e) {
             res.sendStatus(500);
@@ -38,7 +38,7 @@ class cryptoController {
      */
     getCoin = async (req, res) => {
         try {
-            let coinId = req.params.coinId.toLowerCase();
+            const coinId = req.params.coinId.toLowerCase();
             if(coinId != null && coinId != '') {
                 const data = await this.coinGeckoService.getCoin(coinId);  
                 if(data != null) {

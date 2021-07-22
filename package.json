@@ -10,7 +10,6 @@
     "crypto": 60
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "lint": "eslint \"./**/*.js\""
   },

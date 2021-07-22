@@ -15,7 +15,7 @@ class util {
                     <title>DolarBot API - v${config.version}</title>
                 <head>
                 <body>
-                    <a href=\"${config.gitRepo}\">DolarBot API</a> - v<b>${config.version}</b>
+                    <a href="${config.gitRepo}">DolarBot API</a> - v<b>${config.version}</b>
                 </body>
             `)
         } catch(e) {
@@ -45,7 +45,7 @@ class util {
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
      */
     formatCurrency = (value, decimalPlaces) => {
-        let decimals = decimalPlaces || 2;
+        const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
         if(!isNaN(convertedValue)){
             if(convertedValue < 0.01) {
@@ -65,7 +65,7 @@ class util {
      */
     formatCurrencyWithTaxes = (value, decimalPlaces) => {
         const taxPercent = parseInt(config.taxPercent);
-        let decimals = decimalPlaces || 2;
+        const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
         if(!isNaN(convertedValue)){
             if(convertedValue < 0.01) {

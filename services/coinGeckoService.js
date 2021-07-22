@@ -8,7 +8,7 @@ loadCoinList = async (apiClient, cache) => {
         coinList = cacheValue;
     }
     else {
-        let value = await apiClient.coins.list();
+        const value = await apiClient.coins.list();
         if(value.success && value.data.length > 0) {
             coinList = value.data;
             console.log(`Loaded ${coinList.length} cryptocurrencies...`);
@@ -27,9 +27,9 @@ fetchFromCoinList = async (coinId, apiClient, cache) => {
     try{
         if(coinList != null && coinList.length > 0)
         {
-            let coin = coinList.find(x => x.id === coinId);
+            const coin = coinList.find(x => x.id === coinId);
             if(coin && coin != null) {                
-                let data = await fetchData(coinId, apiClient, cache);
+                const data = await fetchData(coinId, apiClient, cache);
                 return {
                     name: coin.name,
                     code: coin.symbol.toUpperCase(),
@@ -103,7 +103,7 @@ class coinGeckoService {
      * @description Obtiene la cotización la moneda especificada contra peso y dólar
      */
     getCoin = async (coinId) => {
-        let data = await fetchFromCoinList(coinId, this.coinGeckoClient, this.cache);
+        const data = await fetchFromCoinList(coinId, this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -117,7 +117,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Bitcoin (BTC) contra peso y dólar
      */
     getBitcoin = async (res) => {
-        let data = await fetchData('bitcoin', this.coinGeckoClient, this.cache);
+        const data = await fetchData('bitcoin', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -130,7 +130,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Bitcoin Cash (BCH) contra peso y dólar
      */
     getBitcoinCash = async (res) => {
-        let data = await fetchData('bitcoin-cash', this.coinGeckoClient, this.cache);
+        const data = await fetchData('bitcoin-cash', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -143,7 +143,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Ethereum (ETC) contra peso y dólar
      */
     getEthereum = async (res) => {
-        let data = await fetchData('ethereum', this.coinGeckoClient, this.cache);
+        const data = await fetchData('ethereum', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -156,7 +156,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Litecoin (LTC) contra peso y dólar
      */
     getLitecoin = async (res) => {
-        let data = await fetchData('litecoin', this.coinGeckoClient, this.cache);
+        const data = await fetchData('litecoin', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -169,7 +169,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Monero (XMR) contra peso y dólar
      */
     getMonero = async (res) => {
-        let data = await fetchData('monero', this.coinGeckoClient, this.cache);
+        const data = await fetchData('monero', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -182,7 +182,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del Ripple (XRP) contra peso y dólar
      */
     getRipple = async (res) => {
-        let data = await fetchData('ripple', this.coinGeckoClient, this.cache);
+        const data = await fetchData('ripple', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }
@@ -195,7 +195,7 @@ class coinGeckoService {
      * @description Obtiene la cotización del DASH contra peso y dólar
      */
     getDash = async (res) => {
-        let data = await fetchData('dash', this.coinGeckoClient, this.cache);
+        const data = await fetchData('dash', this.coinGeckoClient, this.cache);
         if(data != null) {
             return data;
         }

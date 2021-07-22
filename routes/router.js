@@ -44,7 +44,7 @@ const cryptoInstance = new cryptoController(coinGeckoInstance);
 /**
  * @description Status
  */
-router.get('/api/status', async (_req, res, _next) => res.sendStatus(200));
+router.get('/api/status', async (_req, res) => res.sendStatus(200));
 
 /**
  * @description Rutas dolar
