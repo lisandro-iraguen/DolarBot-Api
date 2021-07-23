@@ -6,19 +6,23 @@ const router = express.Router();
 //Caches
 const defaultCacheSeconds = !isNaN(config.cacheTTLSeconds.default) && config.cacheTTLSeconds.default > 0 ? config.cacheTTLSeconds.default : 0;
 const cryptoCacheSeconds = !isNaN(config.cacheTTLSeconds.crypto) && config.cacheTTLSeconds.crypto > 0 ? config.cacheTTLSeconds.crypto : 0;
+const exchangeRateHostSeconds = !isNaN(config.cacheTTLSeconds.exchangeRateHost) && config.cacheTTLSeconds.exchangeRateHost > 0 ? config.cacheTTLSeconds.exchangeRateHost : 0;
 const defaultCache = new NodeCache({ stdTTL: defaultCacheSeconds, checkperiod: defaultCacheSeconds * 0.2, useClones: false });
 const cryptoCache = new NodeCache({ stdTTL: cryptoCacheSeconds, checkperiod: cryptoCacheSeconds * 0.2, useClones: false });
+const exchangeRateHostCache = new NodeCache({ stdTTL: exchangeRateHostSeconds, checkperiod: exchangeRateHostSeconds * 0.2, useClones: false });
 
 //Services
 const dolarSiService = require('../services/dolarSiService');
 const dolarTodayService = require('../services/dolarTodayService');
 const bluePyService = require('../services/bluePyService');
 const coinGeckoService = require('../services/coinGeckoService');
+const exchangeRateHostService = require('../services/exchangeRateHostService');
 
 const dolarSiServiceInstance = new dolarSiService(defaultCache);
 const dolarTodayServiceInstance = new dolarTodayService(defaultCache);
 const bluePyServiceInstance = new bluePyService(defaultCache);
 const coinGeckoInstance = new coinGeckoService(cryptoCache);
+const exchangeRateHostInstance = new exchangeRateHostService(exchangeRateHostCache);
 
 //Controllers
 const dolarController = require('../controller/dolarController');
@@ -30,6 +34,7 @@ const bcraController = require('../controller/bcraController');
 const metalesController = require('../controller/metalesController');
 const vzlaController = require('../controller/vzlaController');
 const cryptoController = require('../controller/cryptoController');
+const currencyController = require('../controller/currencyController');
 
 const dolarInstance = new dolarController(dolarSiServiceInstance, bluePyServiceInstance);
 const euroInstance = new euroController(dolarSiServiceInstance, bluePyServiceInstance);
@@ -40,6 +45,7 @@ const bcraInstance = new bcraController(dolarSiServiceInstance);
 const metalesInstance = new metalesController(dolarSiServiceInstance);
 const vzlaInstance = new vzlaController(dolarTodayServiceInstance);
 const cryptoInstance = new cryptoController(coinGeckoInstance);
+const currencyInstance = new currencyController(exchangeRateHostInstance);
 
 /**
  * @description Status
@@ -97,15 +103,22 @@ router.get('/api/euro/bancos/roela', euroInstance.getEuroRoela);
 /**
  * @description Rutas real
  */
- router.get('/api/real/oficial', realInstance.getRealOficial);
- router.get('/api/real/ahorro', realInstance.getRealAhorro);
- router.get('/api/real/blue', realInstance.getRealBlue);
+router.get('/api/real/oficial', realInstance.getRealOficial);
+router.get('/api/real/ahorro', realInstance.getRealAhorro);
+router.get('/api/real/blue', realInstance.getRealBlue);
 router.get('/api/real/bancos/nacion', realInstance.getRealNacion);
 router.get('/api/real/bancos/bbva', realInstance.getRealBBVA);
 router.get('/api/real/bancos/chaco', realInstance.getRealChaco);
 router.get('/api/real/bancos/piano', realInstance.getRealPiano);
 router.get('/api/real/bancos/ciudad', realInstance.getRealCiudad);
 router.get('/api/real/bancos/supervielle', realInstance.getRealSupervielle);
+
+/**
+ * @description Rutas otras monedas del mundo
+ */
+router.get('/api/monedas/lista', currencyInstance.getCurrencyList)
+router.get('/api/monedas/valor/:code', currencyInstance.getCurrencyValue);
+router.get('/api/monedas/historico/:code', currencyInstance.getHistoricalValues);
 
 /**
  * @description Rutas Reservas y Circulante

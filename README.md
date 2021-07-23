@@ -146,22 +146,63 @@
 }
 ```
 
-### Metales
+### Otras monedas del mundo
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
-| GET | /api/metales/oro | Valor internacional del Oro |
-| GET | /api/metales/plata | Valor internacional de la Plata |
-| GET | /api/metales/cobre | Valor internacional del Cobre |
+| GET | /api/monedas/lista | Obtiene la lista de monedas disponibles para su consulta |
+| GET | /api/monedas/valor/`<id>` | Valor de la moneda especificada contra el Peso.<br />Debe ser un código válido de la lista de monedas |
+| GET | /api/monedas/historico/`<id>` | Valores diarios históricos de la moneda especificada contra el Peso.<br />Debe ser un código válido de la lista de monedas |
 
 #### Respuestas
 
+###### Lista de monedas
+```javascript
+[
+    {
+        code: "AED",
+        name: "United Arab Emirates Dirham",
+    },
+    {
+        code: "AFN",
+        name: "Afghan Afghani"
+    },
+
+    ...
+
+    {
+        code: "JPY",
+        name: "Japanese Yen"
+    }
+]
+```
+
+###### Valor
 ```javascript
 {
-    fecha: "2021/01/02 01:32:14",
-    valor: "1893.40",
-    unidad: "Onza",
-    moneda: "USD"
+    fecha: "2021/07/22 23:43:28",
+    valor: "96.41",
 }
+```
+
+###### Histórico
+```javascript
+[
+    {
+        fecha: "2006/05/16",
+        valor: "3.03",
+    },
+    {
+        fecha: "2006/05/17",
+        valor: "3.04",
+    },
+
+    ...
+
+    {
+        fecha: "2015/09/19",
+        valor: "9.37",
+    }
+]
 ```
 
 ### Crypto
@@ -209,6 +250,24 @@
     ars: "4467101.00",
     arsTaxed: "7370716.65",
     usd: "49817.00"
+}
+```
+
+### Metales
+| Método | Endpoint | Descripción |
+| ------ | ------ | ------ |
+| GET | /api/metales/oro | Valor internacional del Oro |
+| GET | /api/metales/plata | Valor internacional de la Plata |
+| GET | /api/metales/cobre | Valor internacional del Cobre |
+
+#### Respuestas
+
+```javascript
+{
+    fecha: "2021/01/02 01:32:14",
+    valor: "1893.40",
+    unidad: "Onza",
+    moneda: "USD"
 }
 ```
 

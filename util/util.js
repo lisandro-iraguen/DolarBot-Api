@@ -37,7 +37,21 @@ class util {
     /**
      * Obtiene la fecha y hora actual formateada.
      */
-    getDateTime = () => moment().tz(timezone).format('yyyy/MM/DD HH:mm:ss');    
+    getDateTime = () => moment().tz(timezone).format('yyyy/MM/DD HH:mm:ss');
+    
+    /**
+     * Obtiene la fecha actual formateada.
+     */
+    getDate = () => moment().tz(timezone).format('yyyy/MM/DD');
+
+    /**
+     * Reemplaza todas las ocurrencias del valor buscado por el valor deseado en la cadena.
+     * @param {String} str Cadena a procesar.
+     * @param {String} searchValue Valor a buscar.
+     * @param {String} replaceValue Valor de reemplazo.
+     * @returns La cadena original con todos los caracteres reemplazados.
+     */
+    replaceAll = (str, searchValue, replaceValue) => str.split(searchValue).join(replaceValue);
 
     /**
      * Formatea un texto numérico a formato moneda.
