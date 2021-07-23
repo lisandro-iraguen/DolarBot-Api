@@ -379,7 +379,9 @@
 ## Integraciones
 - [DolarSí](https://www.dolarsi.com/api/dolarSiInfo.xml)
 - [DolarToday](https://dolartoday.com/api/)
+- [BluePy](https://github.com/flechajm/BluePy)
 - [CoinGecko](https://www.coingecko.com/es/api)
+- [ExchangeRate.host](https://exchangerate.host/)
 
 ## Agradecimientos
 - [@Castrogiovanni20](https://github.com/Castrogiovanni20) - Por proveer el código del proyecto original y permitirme usar su API libremente.
