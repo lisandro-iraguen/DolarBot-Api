@@ -15,7 +15,7 @@ class bcraController {
             const data = await this.dolarSiService.getInfoDolar()
             let reservasDolares = this.util.formatCurrency(data.cotiza.Reservas_y_circulante.casa394.compra._text)
             if(reservasDolares !== '?'){
-                reservasDolares = BigInt(reservasDolares * 1000) * BigInt(1000000)
+                reservasDolares = BigInt(Math.round(reservasDolares * 1000)) * BigInt(1000000)
             }
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -39,7 +39,7 @@ class bcraController {
             const data = await this.dolarSiService.getInfoDolar()
             let circulantePesos = this.util.formatCurrency(data.cotiza.Reservas_y_circulante.casa395.compra._text)
             if(circulantePesos !== '?'){
-                circulantePesos = BigInt(circulantePesos * 1000) * BigInt(1000000)
+                circulantePesos = BigInt(Math.round(circulantePesos * 1000)) * BigInt(1000000)
             }
             const valores = {
                 fecha: this.util.getDateTime(),
