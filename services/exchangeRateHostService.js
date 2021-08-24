@@ -92,7 +92,7 @@ class exchangeRateHostService {
                 for (let currentYear = startYear; currentYear <= endYear; currentYear++) {
                     const startDate = currentYear.toString() + '-01-01';
                     const endDate = currentYear == endYear ? this.util.replaceAll(this.util.getDate(), '/', '-') : currentYear.toString() + '-12-31';
-                    const fetchTask = await this._fetchData(ENDPOINT_TIMESERIES,
+                    const fetchTask = this._fetchData(ENDPOINT_TIMESERIES,
                         [
                             { key: 'base', value: currencyCode },
                             { key: 'symbols', value: BASE_CURRENCY },
