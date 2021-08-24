@@ -6,7 +6,7 @@ const ENDPOINT_LATEST = '/latest';
 const ENDPOINT_TIMESERIES = '/timeseries';
 const ENDPOINT_SYMBOLS = '/symbols';
 const BASE_CURRENCY = 'ARS';
-const EXCLUDED_CURRENCIES = ['ARS', 'USD', 'EUR', 'BRL', 'BTC', 'XAG', 'XAU', 'XDR', 'XPD', 'XPT']
+const EXCLUDED_CURRENCIES = ['ARS', 'BTC', 'XAG', 'XAU', 'XDR', 'XPD', 'XPT']
 const TIMESERIES_MIN_YEAR = 2006;
 const ERROR_INVALID_CODE = 'Error: Unsupported currency code';
 
