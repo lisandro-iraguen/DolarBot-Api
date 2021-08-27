@@ -4,18 +4,18 @@ let coinList = [];
 loadCoinList = async (apiClient, cache) => {
     console.log('Loading CoinGecko currency list...');
     const cacheValue = cache.get(`coingeckolist`);
-    if (cacheValue !== undefined) {
+    if(cacheValue !== undefined) {
         coinList = cacheValue;
     }
     else {
         const value = await apiClient.coins.list();
-        if (value.success && value.data.length > 0) {
+        if(value.success && value.data.length > 0) {
             coinList = value.data;
             console.log(`Loaded ${coinList.length} cryptocurrencies...`);
         }
-        else {
+        else{
             console.log(`Failed to load cryptocurrencies...`);
-            console.log(value.message);
+            console.log(value.message);            
         }
     }
 }
@@ -24,20 +24,20 @@ loadCoinList = async (apiClient, cache) => {
  * Obtiene el valor de la criptomoneda especificada en la API de CoinGecko, validando que el ID sea un parámetro válido.
  */
 fetchFromCoinList = async (coinId, apiClient, cache) => {
-    try {
-        if (coinList != null && coinList.length > 0) {
+    try{
+        if(coinList != null && coinList.length > 0)
+        {
             const coin = coinList.find(x => x.id === coinId);
-            if (coin && coin != null) {
+            if(coin && coin != null) {                
                 const data = await fetchData(coinId, apiClient, cache);
                 return {
-                    id: coin.id,
                     name: coin.name,
                     code: coin.symbol.toUpperCase(),
                     ...data,
                 };
             }
         }
-
+        
         return null;
     }
     catch (e) {
@@ -52,7 +52,7 @@ fetchData = async (coinId, apiClient, cache) => {
     const cacheValue = cache.get(`coingecko:${coinId}`);
     try {
 
-        if (cacheValue !== undefined) {
+        if(cacheValue !== undefined) {
             return cacheValue;
         }
         else {
@@ -60,18 +60,18 @@ fetchData = async (coinId, apiClient, cache) => {
                 ids: [coinId],
                 vs_currencies: ['ars', 'usd']
             });
-
-            if (value.success) {
+            
+            if(value.success){
                 cache.set(`coingecko:${coinId}`, value.data[coinId]);
                 return value.data[coinId];
             }
-            else {
+            else{
                 console.log(value.message);
                 return null;
             }
         }
     }
-    catch (e) {
+    catch(e) {
         return null;
     }
 }
@@ -91,10 +91,10 @@ class coinGeckoService {
      * @description Obtiene la lista de cryptomonedas soportadas
      */
     getCoinList = async () => {
-        if (coinList != null) {
-            return coinList.filter(x => x.id != null && x.id != '').map(x => ({ id: x.id, code: x.symbol, name: x.name, }));
+        if(coinList != null) {
+            return coinList.filter(x => x.id != null && x.id != '').map(x => ({ code: x.id, name: x.name, }));
         }
-        else {
+        else{
             return [];
         }
     }
@@ -104,11 +104,103 @@ class coinGeckoService {
      */
     getCoin = async (coinId) => {
         const data = await fetchFromCoinList(coinId, this.coinGeckoClient, this.cache);
-        if (data != null) {
+        if(data != null) {
             return data;
         }
-        else {
+        else{
             return null;
+        }
+    }
+        
+
+    /**
+     * @description Obtiene la cotización del Bitcoin (BTC) contra peso y dólar
+     */
+    getBitcoin = async (res) => {
+        const data = await fetchData('bitcoin', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    };
+
+    /**
+     * @description Obtiene la cotización del Bitcoin Cash (BCH) contra peso y dólar
+     */
+    getBitcoinCash = async (res) => {
+        const data = await fetchData('bitcoin-cash', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtiene la cotización del Ethereum (ETC) contra peso y dólar
+     */
+    getEthereum = async (res) => {
+        const data = await fetchData('ethereum', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtiene la cotización del Litecoin (LTC) contra peso y dólar
+     */
+    getLitecoin = async (res) => {
+        const data = await fetchData('litecoin', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtiene la cotización del Monero (XMR) contra peso y dólar
+     */
+    getMonero = async (res) => {
+        const data = await fetchData('monero', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtiene la cotización del Ripple (XRP) contra peso y dólar
+     */
+    getRipple = async (res) => {
+        const data = await fetchData('ripple', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtiene la cotización del DASH contra peso y dólar
+     */
+    getDash = async (res) => {
+        const data = await fetchData('dash', this.coinGeckoClient, this.cache);
+        if(data != null) {
+            return data;
+        }
+        else{
+            res.sendStatus(500);
         }
     }
 }

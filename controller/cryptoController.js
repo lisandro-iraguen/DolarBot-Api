@@ -1,4 +1,3 @@
-const { response } = require("express");
 const util = require("../util/util")
 
 /**
@@ -7,7 +6,6 @@ const util = require("../util/util")
  */
 function _sendResponseData(data, response, util) {
     const valores = {
-        id: data.id,
         name: data.name,
         code: data.code,
         fecha: util.getDateTime(),
@@ -25,7 +23,7 @@ class cryptoController {
     }
 
     getCoinList = async (_req, res) => {
-        try {
+        try{
             const coinList = await this.coinGeckoService.getCoinList();
             res.send(coinList);
         } catch (e) {
@@ -41,16 +39,16 @@ class cryptoController {
     getCoin = async (req, res) => {
         try {
             const coinId = req.params.coinId.toLowerCase();
-            if (coinId != null && coinId != '') {
-                const data = await this.coinGeckoService.getCoin(coinId);
-                if (data != null) {
+            if(coinId != null && coinId != '') {
+                const data = await this.coinGeckoService.getCoin(coinId);  
+                if(data != null) {
                     _sendResponseData(data, res, this.util);
                 }
-                else {
-                    res.sendStatus(400);
+                else{
+                    res.sendStatus(500);
                 }
             }
-            else {
+            else{
                 res.sendStatus(400);
             }
         } catch (e) {
@@ -65,11 +63,16 @@ class cryptoController {
      */
     getBitcoin = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getCoin('bitcoin');
-            if (data != null) {
+            let data = await this.coinGeckoService.getBitcoin();
+            if(data != null){
+                data = {
+                    name: 'Bitcoin',
+                    code: 'BTC',
+                    ...data,
+                };
                 _sendResponseData(data, res, this.util);
             }
-            else {
+            else{
                 res.sendStatus(500);
             }
         } catch (e) {
@@ -84,11 +87,16 @@ class cryptoController {
      */
     getEthereum = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getEthereum('ethereum');
-            if (data != null) {
+            let data = await this.coinGeckoService.getEthereum();
+            if(data != null){
+                data = {
+                    name: 'Ethereum',
+                    code: 'ETH',
+                    ...data,
+                };
                 _sendResponseData(data, res, this.util);
             }
-            else {
+            else{
                 res.sendStatus(500);
             }
         } catch (e) {
@@ -103,11 +111,16 @@ class cryptoController {
      */
     getLitecoin = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getLitecoin('litecoin');
-            if (data != null) {
-                _sendResponseData(data, res, this.util);
+            let data = await this.coinGeckoService.getLitecoin();
+            if(data != null){
+                data = {
+                    name: 'Litecoin',
+                    code: 'LTC',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);  
             }
-            else {
+            else{
                 res.sendStatus(500);
             }
         } catch (e) {
@@ -122,11 +135,16 @@ class cryptoController {
      */
     getBitcoinCash = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getBitcoinCash('bitcoin-cash');
-            if (data != null) {
-                _sendResponseData(data, res, this.util);
+            let data = await this.coinGeckoService.getBitcoinCash();
+            if(data != null){
+                data = {
+                    name: 'Bitcoin Cash',
+                    code: 'BCH',
+                    ...data,
+                };
+                _sendResponseData(data, res, this.util);  
             }
-            else {
+            else{
                 res.sendStatus(500);
             }
         } catch (e) {
@@ -141,11 +159,16 @@ class cryptoController {
      */
     getMonero = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getMonero('monero');
-            if (data != null) {
+            let data = await this.coinGeckoService.getMonero();
+            if(data != null){
+                data = {
+                    name: 'Monero',
+                    code: 'XMR',
+                    ...data,
+                };
                 _sendResponseData(data, res, this.util);
             }
-            else {
+            else{
                 res.sendStatus(500);
             }
         } catch (e) {
@@ -160,13 +183,18 @@ class cryptoController {
      */
     getRipple = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getRipple('ripple');
-            if (data != null) {
+            let data = await this.coinGeckoService.getRipple();
+            if(data != null){
+                data = {
+                    name: 'Ripple',
+                    code: 'XRP',
+                    ...data,
+                };
                 _sendResponseData(data, res, this.util);
             }
-            else {
+            else{
                 res.sendStatus(500);
-            }
+            }      
         } catch (e) {
             res.sendStatus(500);
             console.log(e);
@@ -179,13 +207,18 @@ class cryptoController {
      */
     getDash = async (_req, res) => {
         try {
-            let data = await this.coinGeckoService.getDash('dash');
-            if (data != null) {
+            let data = await this.coinGeckoService.getDash();
+            if(data != null){
+                data = {
+                    name: 'DASH',
+                    code: 'DASH',
+                    ...data,
+                };
                 _sendResponseData(data, res, this.util);
             }
-            else {
+            else{
                 res.sendStatus(500);
-            }
+            } 
         } catch (e) {
             res.sendStatus(500);
             console.log(e);
