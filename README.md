@@ -232,18 +232,18 @@
 ```javascript
 [
     {
-        code: "btc",
-        name: "bitcoin"
+        code: "bitcoin",
+        name: "Bitcoin"
     },
     {
-        code: "ada",
-        name: "cardano"
+        code: "cardano",
+        name: "Cardano"
     },
 
     ...
 
     {
-        code: "eth",
+        code: "ethereum",
         name: "Ethereum"
     }
 ]
