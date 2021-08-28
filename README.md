@@ -233,18 +233,21 @@
 [
     {
         code: "bitcoin",
-        name: "Bitcoin"
+        name: "Bitcoin",
+        symbol: "BTC"
     },
     {
         code: "cardano",
-        name: "Cardano"
+        name: "Cardano",
+        symbol: "ADA"
     },
 
     ...
 
     {
         code: "ethereum",
-        name: "Ethereum"
+        name: "Ethereum",
+        symbol: "ETH"
     }
 ]
 ```
