@@ -156,8 +156,8 @@
 | Método | Endpoint | Descripción |
 | ------ | ------ | ------ |
 | GET | /api/monedas/lista | Obtiene la lista de monedas disponibles para su consulta |
-| GET | /api/monedas/valor/`<id>` | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
-| GET | /api/monedas/historico/`<id>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
+| GET | /api/monedas/valor/`<code>` | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
+| GET | /api/monedas/historico/`<code>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
 
 #### Respuestas
 
