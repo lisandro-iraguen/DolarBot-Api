@@ -104,17 +104,22 @@ class exchangeRateHostService {
 
                 let data = [];
                 for (let i = 0; i < parallelTasks.length; i++) {
-                    const task = parallelTasks[i];
-                    const response = await task;
-                    if (response.success) {
-                        const rates = Object.entries(response.rates);
-                        const filteredRates = rates.filter(x => typeof x[1].ARS !== 'undefined').map(x => (
-                            {
-                                fecha: this.util.replaceAll(x[0], '-', '/'),
-                                valor: this.util.formatCurrency(x[1].ARS.toString()),
-                            }
-                        ));
-                        data.push(...filteredRates);
+                    try {
+                        const task = parallelTasks[i];
+                        const response = await task;
+                        if (response.success) {
+                            const rates = Object.entries(response.rates);
+                            const filteredRates = rates.filter(x => typeof x[1].ARS !== 'undefined').map(x => (
+                                {
+                                    fecha: this.util.replaceAll(x[0], '-', '/'),
+                                    valor: this.util.formatCurrency(x[1].ARS.toString()),
+                                }
+                            ));
+                            data.push(...filteredRates);
+                        }
+                    }
+                    catch {
+                        continue;
                     }
                 }
 
