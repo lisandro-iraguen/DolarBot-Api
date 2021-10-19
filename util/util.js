@@ -18,7 +18,7 @@ class util {
                     <a href="${config.gitRepo}">DolarBot API</a> - v<b>${config.version}</b>
                 </body>
             `)
-        } catch(e) {
+        } catch (e) {
             console.log(e)
             res.sendStatus(500);
         }
@@ -38,7 +38,7 @@ class util {
      * Obtiene la fecha y hora actual formateada.
      */
     getDateTime = () => moment().tz(timezone).format('yyyy/MM/DD HH:mm:ss');
-    
+
     /**
      * Obtiene la fecha actual formateada.
      */
@@ -61,13 +61,10 @@ class util {
     formatCurrency = (value, decimalPlaces) => {
         const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        if(!isNaN(convertedValue)){
-            if(convertedValue < 0.01) {
-                convertedValue = Math.ceil(convertedValue * 100) / 100;
-            }
+        if (!isNaN(convertedValue)) {
             return convertedValue.toFixed(decimals);
         }
-        else{
+        else {
             return '?';
         }
     }
@@ -81,13 +78,10 @@ class util {
         const taxPercent = parseInt(config.taxPercent);
         const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        if(!isNaN(convertedValue)){
-            if(convertedValue < 0.01) {
-                convertedValue = Math.ceil(convertedValue * 100) / 100;
-            }
+        if (!isNaN(convertedValue)) {
             return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
         }
-        else{
+        else {
             return '?';
         }
     }
