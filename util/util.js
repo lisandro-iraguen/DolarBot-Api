@@ -62,6 +62,9 @@ class util {
         const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
         if (!isNaN(convertedValue)) {
+            if (decimals == 2 && convertedValue < 0.01) {
+                convertedValue = Math.ceil(convertedValue * 100) / 100;
+            }
             return convertedValue.toFixed(decimals);
         }
         else {
@@ -79,6 +82,9 @@ class util {
         const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
         if (!isNaN(convertedValue)) {
+            if (decimals == 2 && convertedValue < 0.01) {
+                convertedValue = Math.ceil(convertedValue * 100) / 100;
+            }
             return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
         }
         else {
