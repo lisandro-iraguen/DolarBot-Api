@@ -1,6 +1,6 @@
 {
   "name": "dolarbot-api",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "main": "index.js",
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
