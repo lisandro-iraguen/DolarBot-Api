@@ -54,6 +54,22 @@ class util {
     replaceAll = (str, searchValue, replaceValue) => str.split(searchValue).join(replaceValue);
 
     /**
+     * Formatea un texto a formato numérico.
+     * @param {string} value Texto que contiene el valor numérico a convertir.
+     * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
+     */
+    formatNumber = (value, decimalPlaces) => {
+        const decimals = decimalPlaces || 2;
+        let convertedValue = parseFloat(value);
+        if (!isNaN(convertedValue)) {
+            return convertedValue.toFixed(decimals);
+        }
+        else {
+            return '?';
+        }
+    }
+
+    /**
      * Formatea un texto numérico a formato moneda.
      * @param {string} value Texto que contiene el valor numérico a convertir.
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.

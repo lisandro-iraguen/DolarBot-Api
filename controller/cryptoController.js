@@ -9,10 +9,15 @@ function _sendResponseData(data, response, util) {
     const valores = {
         name: data.name,
         code: data.code,
+        image: data.image,
+        date: util.getDateTime(),
         fecha: util.getDateTime(),
         ars: util.formatCurrency(data.ars.toString(), decimalPlaces),
         arsTaxed: util.formatCurrencyWithTaxes(data.ars.toString(), decimalPlaces),
         usd: util.formatCurrency(data.usd.toString(), decimalPlaces),
+        usd24hchange: util.formatNumber(data.usd_24h_change),
+        usd24hvolume: util.formatNumber(data.usd_24h_vol),
+        usdMarketCap: util.formatNumber(data.usd_market_cap)
     }
     response.send(valores);
 }
@@ -46,7 +51,7 @@ class cryptoController {
                     _sendResponseData(data, res, this.util);
                 }
                 else {
-                    res.sendStatus(500);
+                    res.sendStatus(404);
                 }
             }
             else {
@@ -74,7 +79,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -98,7 +103,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -122,7 +127,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -146,7 +151,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -170,7 +175,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -194,7 +199,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);
@@ -218,7 +223,7 @@ class cryptoController {
                 _sendResponseData(data, res, this.util);
             }
             else {
-                res.sendStatus(500);
+                res.sendStatus(404);
             }
         } catch (e) {
             res.sendStatus(500);

@@ -50,22 +50,37 @@ fetchFromCoinList = async (coinId, apiClient, cache) => {
 fetchData = async (coinId, apiClient, cache) => {
     const cacheValue = cache.get(`coingecko:${coinId}`);
     try {
-
         if (cacheValue !== undefined) {
             return cacheValue;
         }
         else {
-            const value = await apiClient.simple.price({
+            const getCoinPrice = apiClient.simple.price({
                 ids: [coinId],
-                vs_currencies: ['ars', 'usd']
+                vs_currencies: ['ars', 'usd'],
+                include_24hr_vol: true,
+                include_24hr_change: true,
+                include_market_cap: true
+            });
+            const getCoinInfo = apiClient.coins.fetch(coinId, {
+                localization: true,
+                tickers: false,
+                market_data: false,
+                community_data: false,
+                developer_data: false,
+                sparkline: false
             });
 
-            if (value.success) {
-                cache.set(`coingecko:${coinId}`, value.data[coinId]);
-                return value.data[coinId];
+            const [coinPrice, coinInfo] = await Promise.all([getCoinPrice, getCoinInfo])
+            if (coinPrice.success && coinInfo.success) {
+                const value = {
+                    ...coinInfo.data,
+                    ...coinPrice.data[coinId]
+                };
+                cache.set(`coingecko:${coinId}`, value);
+                return value;
             }
             else {
-                console.log(value.message);
+                console.log(coinPrice.message);
                 return null;
             }
         }
