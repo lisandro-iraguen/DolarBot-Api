@@ -1,10 +1,10 @@
 {
   "name": "dolarbot-api",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "main": "index.js",
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
-  "taxPercent": 65,
+  "taxPercent": 75,
   "cacheTTLSeconds": {
     "default": 300,
     "crypto": 60,
