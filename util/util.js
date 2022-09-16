@@ -73,35 +73,20 @@ class util {
      * Formatea un texto numérico a formato moneda.
      * @param {string} value Texto que contiene el valor numérico a convertir.
      * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
+     * @param {int} taxPercent Opcional. Porcentaje de impuestos a adicionar.
      */
-    formatCurrency = (value, decimalPlaces) => {
+    formatCurrency = (value, decimalPlaces, taxPercent = null) => {
         const decimals = decimalPlaces || 2;
         let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
         if (!isNaN(convertedValue)) {
             if (decimals == 2 && convertedValue < 0.01) {
                 convertedValue = Math.ceil(convertedValue * 100) / 100;
             }
-            return convertedValue.toFixed(decimals);
-        }
-        else {
-            return '?';
-        }
-    }
-
-    /**
-     * Formatea un texto que representa un monto a formato moneda y aplica los impuestos configurados.
-     * @param {string} value Texto que contiene el valor numérico a convertir.
-     * @param {number} decimalPlaces Cantidad de caracteres decimales a conservar.
-     */
-    formatCurrencyWithTaxes = (value, decimalPlaces) => {
-        const taxPercent = parseInt(config.taxPercent);
-        const decimals = decimalPlaces || 2;
-        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        if (!isNaN(convertedValue)) {
-            if (decimals == 2 && convertedValue < 0.01) {
-                convertedValue = Math.ceil(convertedValue * 100) / 100;
+            if (taxPercent != null && taxPercent > 0) {
+                return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
+            } else {
+                return convertedValue.toFixed(decimals);
             }
-            return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
         }
         else {
             return '?';
@@ -111,8 +96,9 @@ class util {
     /**
      * Devuelve un objeto que contiene los valores de la cotización anual por mes.
      * @param {object} evolucionAnual Objeto que contiene el valor de cada mes del año.
+     * @param {int} taxPercent Opcional. Porcentaje de impuestos a adicionar.
      */
-    getEvolucion = (evolucionAnual) => {
+    getEvolucion = (evolucionAnual, taxPercent = null) => {
         const now = new Date()
         const mesActual = now.getMonth() + 1
 
@@ -121,33 +107,7 @@ class util {
             meses.push({
                 "anio": (i < mesActual ? now.getFullYear() : now.getFullYear() - 1).toString(),
                 "mes": i.toString(),
-                "valor": this.formatCurrency(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text).toString()
-            })
-        }
-        meses = meses.sort((a, b) => a.anio - b.anio)
-
-        const valores = {
-            fecha: this.getDateTime(),
-            meses,
-        }
-
-        return valores;
-    }
-
-    /**
-     * Devuelve un objeto que contiene los valores de la cotización anual por mes con impuestos aplicados.
-     * @param {object} evolucionAnual Objeto que contiene el valor de cada mes del año.
-     */
-    getEvolucionWithTaxes = (evolucionAnual) => {
-        const now = new Date()
-        const mesActual = now.getMonth() + 1
-
-        let meses = []
-        for (let i = 1; i <= Object.keys(evolucionAnual).length; i++) {
-            meses.push({
-                "anio": (i < mesActual ? now.getFullYear() : now.getFullYear() - 1).toString(),
-                "mes": i.toString(),
-                "valor": this.formatCurrencyWithTaxes(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text).toString()
+                "valor": this.formatCurrency(evolucionAnual[[Object.keys(evolucionAnual)[i - 1]]]._text, 2, taxPercent).toString()
             })
         }
         meses = meses.sort((a, b) => a.anio - b.anio)

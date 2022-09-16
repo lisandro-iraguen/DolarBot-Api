@@ -27,6 +27,7 @@
 | GET | /api/dolar/oficial | Cotización del dólar oficial |
 | GET | /api/dolar/blue | Cotización del dólar blue |
 | GET | /api/dolar/ahorro | Cotización del dólar ahorro |
+| GET | /api/dolar/tarjeta | Cotización del dólar tarjeta |
 | GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
 | GET | /api/dolar/promedio | Cotización dólar promedio |
 | GET | /api/dolar/bolsa | Cotización dólar bolsa |
@@ -78,6 +79,7 @@
 | GET | /api/euro/oficial | Cotización del Euro oficial |
 | GET | /api/euro/blue | Cotización del Euro blue |
 | GET | /api/euro/ahorro | Cotización del Euro ahorro |
+| GET | /api/euro/tarjeta | Cotización del Euro tarjeta |
 | GET | /api/euro/bancos/nacion | Cotización del Euro del Banco Nación |
 | GET | /api/euro/bancos/galicia | Cotización del Euro del Banco Galicia |
 | GET | /api/euro/bancos/bbva | Cotización del Euro del Banco BBVA |
@@ -122,6 +124,7 @@
 | GET | /api/real/oficial | Cotización del Real oficial |
 | GET | /api/real/blue | Cotización del Real blue |
 | GET | /api/real/ahorro | Cotización del Real ahorro |
+| GET | /api/real/tarjeta | Cotización del Real tarjeta |
 | GET | /api/real/bancos/nacion | Cotización del Real del Banco Nación |
 | GET | /api/real/bancos/bbva | Cotización del Real del Banco BBVA |
 | GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |

@@ -1,4 +1,5 @@
-const util = require("../util/util")
+const util = require("../util/util");
+const config = require('../package.json');
 
 class bancosController {
     constructor(dolarSiService) {
@@ -13,12 +14,13 @@ class bancosController {
      */
     getDolarBBVA = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa336.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa336.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa336.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa336.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -34,12 +36,13 @@ class bancosController {
      */
     getDolarPiano = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa37.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa37.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa37.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa37.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -55,12 +58,13 @@ class bancosController {
      */
     getDolarHipotecario = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa217.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa217.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa217.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa217.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -76,12 +80,13 @@ class bancosController {
      */
     getDolarGalicia = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa342.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -97,12 +102,13 @@ class bancosController {
      */
     getDolarSantander = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa401.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa401.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa401.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa401.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -118,12 +124,13 @@ class bancosController {
      */
     getDolarCiudad = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa402.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa402.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa402.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa402.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -139,12 +146,13 @@ class bancosController {
      */
     getDolarSupervielle = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa403.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa403.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa403.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa403.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -160,12 +168,13 @@ class bancosController {
      */
     getDolarPatagonia = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa404.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa404.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa404.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa404.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -181,12 +190,13 @@ class bancosController {
      */
     getDolarComafi = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa405.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa405.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa405.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa405.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -201,12 +211,13 @@ class bancosController {
      */
     getDolarNacion = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa6.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa6.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa6.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa6.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -221,12 +232,13 @@ class bancosController {
      */
     getDolarBIND = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa22.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa22.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa22.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa22.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -241,12 +253,13 @@ class bancosController {
      */
     getDolarChaco = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa334.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa334.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa334.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa334.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -261,12 +274,13 @@ class bancosController {
      */
     getDolarPampa = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa335.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa335.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa335.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa335.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -281,12 +295,13 @@ class bancosController {
      */
     getDolarBancor = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa341.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa341.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa341.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa341.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -295,18 +310,19 @@ class bancosController {
         }
     }
 
-     /**
-     * @description Obtener las cotizaciones del Banco de la Provincia de Buenos Aires
-     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
-     */
+    /**
+    * @description Obtener las cotizaciones del Banco de la Provincia de Buenos Aires
+    * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+    */
     getDolarProvincia = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa411.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa411.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa411.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa411.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -321,12 +337,13 @@ class bancosController {
      */
     getDolarICBC = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa412.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa412.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa412.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa412.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -341,12 +358,13 @@ class bancosController {
      */
     getDolarRebanking = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa414.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa414.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa414.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa414.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {
@@ -359,14 +377,15 @@ class bancosController {
      * @description Obtener las cotizaciones de Banco Roela
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
-     getDolarRoela = async (_req, res) => {
+    getDolarRoela = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar()
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa337.compra._text),
                 venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa337.venta._text),
-                ventaAhorro: this.util.formatCurrencyWithTaxes(data.cotiza.Capital_Federal.casa337.venta._text),
+                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa337.venta._text, 2, taxPercent),
             }
             res.send(valores)
         } catch (e) {

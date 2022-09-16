@@ -57,6 +57,7 @@ router.get('/api/status', async (_req, res) => res.sendStatus(200));
  */
 router.get('/api/dolar/oficial', dolarInstance.getDolarOficial);
 router.get('/api/dolar/ahorro', dolarInstance.getDolarAhorro);
+router.get('/api/dolar/tarjeta', dolarInstance.getDolarTarjeta);
 router.get('/api/dolar/blue', dolarInstance.getDolarBlue);
 router.get('/api/dolar/contadoliqui', dolarInstance.getContadoConLiqui);
 router.get('/api/dolar/promedio', dolarInstance.getDolarPromedio);
@@ -84,6 +85,7 @@ router.get('/api/dolar/bancos/roela', bancoInstance.getDolarRoela);
  */
 router.get('/api/euro/oficial', euroInstance.getEuroOficial);
 router.get('/api/euro/ahorro', euroInstance.getEuroAhorro);
+router.get('/api/euro/tarjeta', euroInstance.getEuroTarjeta);
 router.get('/api/euro/blue', euroInstance.getEuroBlue);
 router.get('/api/euro/bancos/nacion', euroInstance.getEuroNacion);
 router.get('/api/euro/bancos/galicia', euroInstance.getEuroGalicia);
@@ -105,6 +107,7 @@ router.get('/api/euro/bancos/roela', euroInstance.getEuroRoela);
  */
 router.get('/api/real/oficial', realInstance.getRealOficial);
 router.get('/api/real/ahorro', realInstance.getRealAhorro);
+router.get('/api/real/tarjeta', realInstance.getRealTarjeta);
 router.get('/api/real/blue', realInstance.getRealBlue);
 router.get('/api/real/bancos/nacion', realInstance.getRealNacion);
 router.get('/api/real/bancos/bbva', realInstance.getRealBBVA);

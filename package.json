@@ -4,7 +4,10 @@
   "main": "index.js",
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
-  "taxPercent": 75,
+  "taxPercent": {
+    "ahorro": 65,
+    "tarjeta": 75
+  },
   "cacheTTLSeconds": {
     "default": 300,
     "crypto": 60,

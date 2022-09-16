@@ -1,4 +1,5 @@
-const util = require("../util/util")
+const util = require("../util/util");
+const config = require('../package.json');
 
 class dolarController {
     constructor(dolarSiService, bluePyService) {
@@ -12,8 +13,7 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getDolarOficial = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -32,13 +32,34 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getDolarAhorro = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.ahorro);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatCurrencyWithTaxes(data.cotiza.Dolar.casa344.venta._text)
+                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text, 2, taxPercent)
+            }
+
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del dolar tarjeta
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+    getDolarTarjeta = async (_req, res) => {
+        try {
+            const data = await this.dolarSiService.getInfoDolar();
+            const taxPercent = parseInt(config.taxPercent.tarjeta);
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
+                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text, 2, taxPercent)
             }
 
             res.send(valores);
@@ -54,8 +75,7 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getDolarBlue = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -76,8 +96,7 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getContadoConLiqui = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -98,8 +117,7 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getDolarPromedio = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -120,8 +138,7 @@ class dolarController {
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
     getDolarBolsa = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = {
                 fecha: this.util.getDateTime(),
@@ -141,8 +158,7 @@ class dolarController {
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
     getEvolucionDolarOficial = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio)
 
@@ -158,10 +174,10 @@ class dolarController {
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
     getEvolucionDolarAhorro = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
-            const valores = this.util.getEvolucionWithTaxes(data.cotiza.evolucion_dolar.oficial.anio)
+            const taxPercent = parseInt(config.taxPercent.ahorro);
+            const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.oficial.anio, taxPercent);
 
             res.send(valores);
         } catch (e) {
@@ -175,8 +191,7 @@ class dolarController {
      * @returns Un objeto con el valor promedio por mes, el mes y el año.
      */
     getEvolucionDolarBlue = async (_req, res) => {
-        try 
-        {
+        try {
             const data = await this.dolarSiService.getInfoDolar();
             const valores = this.util.getEvolucion(data.cotiza.evolucion_dolar.blue.anio)
 

@@ -1,4 +1,5 @@
-const util = require("../util/util")
+const util = require("../util/util");
+const config = require('../package.json');
 
 /**
  * Envía los datos de la respuesta de forma estandarizada.
@@ -6,6 +7,7 @@ const util = require("../util/util")
  */
 function _sendResponseData(data, response, util) {
     const decimalPlaces = data.usd < 1 ? 8 : 2;
+    const taxPercent = parseInt(config.taxPercent.ahorro);
     const valores = {
         name: data.name,
         code: data.code,
@@ -13,7 +15,7 @@ function _sendResponseData(data, response, util) {
         date: util.getDateTime(),
         fecha: util.getDateTime(),
         ars: util.formatCurrency(data.ars.toString(), decimalPlaces),
-        arsTaxed: util.formatCurrencyWithTaxes(data.ars.toString(), decimalPlaces),
+        arsTaxed: util.formatCurrency(data.ars.toString(), decimalPlaces, taxPercent),
         usd: util.formatCurrency(data.usd.toString(), decimalPlaces),
         usd24hchange: util.formatNumber(data.usd_24h_change),
         usd24hvolume: util.formatNumber(data.usd_24h_vol),
