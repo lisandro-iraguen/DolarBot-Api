@@ -6,7 +6,7 @@
   "requiresApiKey": true,
   "taxPercent": {
     "ahorro": 65,
-    "tarjeta": 75
+    "tarjeta": 100
   },
   "cacheTTLSeconds": {
     "default": 300,
