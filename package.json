@@ -30,8 +30,8 @@
     "eslint": "^7.32.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
-    "moment": "^2.29.1",
-    "moment-timezone": "^0.5.33",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.35",
     "node-cache": "^5.1.2",
     "web": "0.0.2",
     "xml-js": "^1.6.11"
