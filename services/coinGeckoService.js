@@ -2,21 +2,26 @@ const CoinGecko = require('coingecko-api');
 let coinList = [];
 
 loadCoinList = async (apiClient, cache) => {
-    console.log('Loading CoinGecko currency list...');
-    const cacheValue = cache.get(`coingeckolist`);
-    if (cacheValue !== undefined) {
-        coinList = cacheValue;
-    }
-    else {
-        const value = await apiClient.coins.list();
-        if (value.success && value.data.length > 0) {
-            coinList = value.data;
-            console.log(`Loaded ${coinList.length} cryptocurrencies...`);
+    try {
+        console.log('Loading CoinGecko currency list...');
+        const cacheValue = cache.get(`coingeckolist`);
+        if (cacheValue !== undefined) {
+            coinList = cacheValue;
         }
         else {
-            console.log(`Failed to load cryptocurrencies...`);
-            console.log(value.message);
+            const value = await apiClient.coins.list();
+            if (value.success && value.data.length > 0) {
+                coinList = value.data;
+                console.log(`Loaded ${coinList.length} cryptocurrencies...`);
+            }
+            else {
+                console.log(`Failed to load cryptocurrencies...`);
+                console.log(value.message);
+            }
         }
+    }
+    catch (e) {
+        console.log(`Failed to load cryptocurrencies. Error: ` + e);
     }
 }
 
