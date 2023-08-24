@@ -1,5 +1,6 @@
 const config = require('../package.json')
 const apiKeyName = 'dolarbot_apikey';
+const debugModeName = 'DOLARBOT_API_DEBUG';
 
 class auth {
 
@@ -10,7 +11,8 @@ class auth {
      * @param {any} next Función a ejecutar luego de la verificación.
      */
     validateApiKey = function (req, res, next) {
-        if(req.path !== '/' && config.requiresApiKey && req.headers[apiKeyName] !== process.env.DOLARBOT_APIKEY){
+        const isLocal = process.env[debugModeName] === 'true';
+        if(req.path !== '/' && !isLocal && config.requiresApiKey && req.headers[apiKeyName] !== process.env.DOLARBOT_APIKEY){
             res.sendStatus(403)
         }
         else{
