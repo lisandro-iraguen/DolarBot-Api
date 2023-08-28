@@ -2,56 +2,61 @@
   <img src="https://github.com/guidospadavecchia/DolarBot-Api/blob/master/design/logo_dolarbot_api.png" height="200px">
 </p>
 
-*** 
+---
 
 ## Status
-[![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
-[![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json) 
-  
-## Descripción
-**DolarBot-API** es la aplicación *backend* de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un *fork* de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).  
 
-*Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas, utilizadas únicamente por [DolarBot](https://top.gg/bot/752669185053818941). Es por esto que al consultar cualquier endpoint devolverá un código `403 Forbidden`. Para utilizar **DolarBot-API** de forma pública es necesario deployar tu propia instancia y realizar la configuración según se explica continuación*.
+[![Version](https://img.shields.io/github/package-json/v/guidospadavecchia/DolarBot-Api?style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
+[![NPM](https://img.shields.io/npm/v/express?color=orange&style=flat-square)](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/package.json)
+
+## Descripción
+
+**DolarBot-API** es la aplicación _backend_ de [DolarBot](https://github.com/guidospadavecchia/DolarBot). Unifica las llamadas a los distintos orígenes de datos en un sólo lugar y bajo un formato estandarizado. Este proyecto es un _fork_ de [Castrogiovanni20/api-dolar-argentina](https://github.com/Castrogiovanni20/api-dolar-argentina).
+
+_Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas, utilizadas únicamente por [DolarBot](https://top.gg/bot/752669185053818941). Es por esto que al consultar cualquier endpoint devolverá un código `403 Forbidden`. Para utilizar **DolarBot-API** de forma pública es necesario deployar tu propia instancia y realizar la configuración según se explica continuación_.
 
 ## Configuración
-1. Configurar el parámetro `requiresApiKey` dentro del archivo `package.json`. Si se desea utilizar la API de forma pública, se debe configurar `requiresApiKey = false`, de lo contrario, configurar `requiresApiKey = true` y crear la variable de entorno `DOLARBOT_APIKEY` en el servidor que aloja la aplicación. *Nota: La misma key debe ser enviada en el header de cada request o de lo contrario la API devolverá un código `403 Forbidden`.* 
+
+1. Configurar el parámetro `requiresApiKey` dentro del archivo `package.json`. Si se desea utilizar la API de forma pública, se debe configurar `requiresApiKey = false`, de lo contrario, configurar `requiresApiKey = true` y crear la variable de entorno `DOLARBOT_APIKEY` en el servidor que aloja la aplicación. _Nota: La misma key debe ser enviada en el header de cada request o de lo contrario la API devolverá un código `403 Forbidden`._
 2. Opcionalmente, crear la variable de entorno `PORT` con el puerto dónde estará escuchando la aplicación.
 3. Deploy.
 
 ## Endpoints
 
 ### Cotizaciones del Dólar
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/dolar/oficial | Cotización del dólar oficial |
-| GET | /api/dolar/blue | Cotización del dólar blue |
-| GET | /api/dolar/ahorro | Cotización del dólar ahorro |
-| GET | /api/dolar/tarjeta | Cotización del dólar tarjeta |
-| GET | /api/dolar/contadoliqui | Cotización dólar contado con liqui |
-| GET | /api/dolar/promedio | Cotización dólar promedio |
-| GET | /api/dolar/bolsa | Cotización dólar bolsa |
-| GET | /api/dolar/bancos/bbva | Cotización del dólar de Banco BBVA |
-| GET | /api/dolar/bancos/piano | Cotización del dólar de Banco Piano |
-| GET | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario |
-| GET | /api/dolar/bancos/galicia | Cotización del dólar de Banco Galicia |
-| GET | /api/dolar/bancos/santander | Cotización del dólar de Banco Santander |
-| GET | /api/dolar/bancos/ciudad | Cotización del dólar de Banco Ciudad |
-| GET | /api/dolar/bancos/supervielle | Cotización del dólar de Banco Supervielle |
-| GET | /api/dolar/bancos/patagonia | Cotización del dólar de Banco Patagonia |
-| GET | /api/dolar/bancos/comafi | Cotización del dólar de Banco Comafi |
-| GET | /api/dolar/bancos/nacion | Cotización del dólar de Banco Nación |
-| GET | /api/dolar/bancos/bind | Cotización del dólar de Banco Industrial |
-| GET | /api/dolar/bancos/bancor | Cotización del dólar de Banco de Córdoba |
-| GET | /api/dolar/bancos/chaco | Cotización del dólar de Nuevo Banco del Chaco |
-| GET | /api/dolar/bancos/pampa | Cotización del dólar de Banco de La Pampa |
-| GET | /api/dolar/bancos/provincia | Cotización del dólar de Banco Provincia |
-| GET | /api/dolar/bancos/icbc | Cotización del dólar de Banco ICBC |
-| GET | /api/dolar/bancos/reba | Cotización del dólar de Rebanking |
-| GET | /api/dolar/bancos/roela | Cotización del dólar de Banco Roela |
+
+| Método | Endpoint                      | Descripción                                   |
+| ------ | ----------------------------- | --------------------------------------------- |
+| GET    | /api/dolar/oficial            | Cotización del dólar oficial                  |
+| GET    | /api/dolar/blue               | Cotización del dólar blue                     |
+| GET    | /api/dolar/ahorro             | Cotización del dólar ahorro                   |
+| GET    | /api/dolar/tarjeta            | Cotización del dólar tarjeta                  |
+| GET    | /api/dolar/contadoliqui       | Cotización dólar contado con liqui            |
+| GET    | /api/dolar/promedio           | Cotización dólar promedio                     |
+| GET    | /api/dolar/bolsa              | Cotización dólar bolsa                        |
+| GET    | /api/dolar/bancos/bbva        | Cotización del dólar de Banco BBVA            |
+| GET    | /api/dolar/bancos/piano       | Cotización del dólar de Banco Piano           |
+| GET    | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario     |
+| GET    | /api/dolar/bancos/galicia     | Cotización del dólar de Banco Galicia         |
+| GET    | /api/dolar/bancos/santander   | Cotización del dólar de Banco Santander       |
+| GET    | /api/dolar/bancos/ciudad      | Cotización del dólar de Banco Ciudad          |
+| GET    | /api/dolar/bancos/supervielle | Cotización del dólar de Banco Supervielle     |
+| GET    | /api/dolar/bancos/patagonia   | Cotización del dólar de Banco Patagonia       |
+| GET    | /api/dolar/bancos/comafi      | Cotización del dólar de Banco Comafi          |
+| GET    | /api/dolar/bancos/nacion      | Cotización del dólar de Banco Nación          |
+| GET    | /api/dolar/bancos/bind        | Cotización del dólar de Banco Industrial      |
+| GET    | /api/dolar/bancos/bancor      | Cotización del dólar de Banco de Córdoba      |
+| GET    | /api/dolar/bancos/chaco       | Cotización del dólar de Nuevo Banco del Chaco |
+| GET    | /api/dolar/bancos/pampa       | Cotización del dólar de Banco de La Pampa     |
+| GET    | /api/dolar/bancos/provincia   | Cotización del dólar de Banco Provincia       |
+| GET    | /api/dolar/bancos/icbc        | Cotización del dólar de Banco ICBC            |
+| GET    | /api/dolar/bancos/reba        | Cotización del dólar de Rebanking             |
+| GET    | /api/dolar/bancos/roela       | Cotización del dólar de Banco Roela           |
 
 #### Respuestas
 
 ###### Genéricos
+
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
@@ -61,6 +66,7 @@
 ```
 
 ###### Bancos
+
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
@@ -70,33 +76,35 @@
 }
 ```
 
-***
+---
 
 ### Cotizaciones del Euro
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/euro/oficial | Cotización del Euro oficial |
-| GET | /api/euro/blue | Cotización del Euro blue |
-| GET | /api/euro/ahorro | Cotización del Euro ahorro |
-| GET | /api/euro/tarjeta | Cotización del Euro tarjeta |
-| GET | /api/euro/bancos/nacion | Cotización del Euro del Banco Nación |
-| GET | /api/euro/bancos/galicia | Cotización del Euro del Banco Galicia |
-| GET | /api/euro/bancos/bbva | Cotización del Euro del Banco BBVA |
-| GET | /api/euro/bancos/pampa | Cotización del Euro del Banco de La Pampa |
-| GET | /api/euro/bancos/chaco | Cotización del Euro del Nuevo Banco del Chaco |
-| GET | /api/euro/bancos/hipotecario | Cotización del Euro del Banco Hipotecario |
-| GET | /api/euro/bancos/piano | Cotización del Euro del Banco Piano |
-| GET | /api/euro/bancos/santander | Cotización del Euro del Banco Santander |
-| GET | /api/euro/bancos/ciudad | Cotización del Euro del Banco Ciudad |
-| GET | /api/euro/bancos/supervielle | Cotización del Euro del Banco Supervielle |
-| GET | /api/euro/bancos/patagonia | Cotización del Euro del Banco Patagonia |
-| GET | /api/euro/bancos/comafi | Cotización del Euro del Banco Comafi |
-| GET | /api/euro/bancos/reba | Cotización del Euro de Rebanking |
-| GET | /api/euro/bancos/roela | Cotización del Euro de Banco Roela |
+
+| Método | Endpoint                     | Descripción                                   |
+| ------ | ---------------------------- | --------------------------------------------- |
+| GET    | /api/euro/oficial            | Cotización del Euro oficial                   |
+| GET    | /api/euro/blue               | Cotización del Euro blue                      |
+| GET    | /api/euro/ahorro             | Cotización del Euro ahorro                    |
+| GET    | /api/euro/tarjeta            | Cotización del Euro tarjeta                   |
+| GET    | /api/euro/bancos/nacion      | Cotización del Euro del Banco Nación          |
+| GET    | /api/euro/bancos/galicia     | Cotización del Euro del Banco Galicia         |
+| GET    | /api/euro/bancos/bbva        | Cotización del Euro del Banco BBVA            |
+| GET    | /api/euro/bancos/pampa       | Cotización del Euro del Banco de La Pampa     |
+| GET    | /api/euro/bancos/chaco       | Cotización del Euro del Nuevo Banco del Chaco |
+| GET    | /api/euro/bancos/hipotecario | Cotización del Euro del Banco Hipotecario     |
+| GET    | /api/euro/bancos/piano       | Cotización del Euro del Banco Piano           |
+| GET    | /api/euro/bancos/santander   | Cotización del Euro del Banco Santander       |
+| GET    | /api/euro/bancos/ciudad      | Cotización del Euro del Banco Ciudad          |
+| GET    | /api/euro/bancos/supervielle | Cotización del Euro del Banco Supervielle     |
+| GET    | /api/euro/bancos/patagonia   | Cotización del Euro del Banco Patagonia       |
+| GET    | /api/euro/bancos/comafi      | Cotización del Euro del Banco Comafi          |
+| GET    | /api/euro/bancos/reba        | Cotización del Euro de Rebanking              |
+| GET    | /api/euro/bancos/roela       | Cotización del Euro de Banco Roela            |
 
 #### Respuestas
 
 ###### Genéricos
+
 ```javascript
 {
     fecha: "2021/07/08 00:24:03",
@@ -106,6 +114,7 @@
 ```
 
 ###### Bancos
+
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
@@ -115,25 +124,27 @@
 }
 ```
 
-***
+---
 
 ### Cotizaciones del Real
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/real/oficial | Cotización del Real oficial |
-| GET | /api/real/blue | Cotización del Real blue |
-| GET | /api/real/ahorro | Cotización del Real ahorro |
-| GET | /api/real/tarjeta | Cotización del Real tarjeta |
-| GET | /api/real/bancos/nacion | Cotización del Real del Banco Nación |
-| GET | /api/real/bancos/bbva | Cotización del Real del Banco BBVA |
-| GET | /api/real/bancos/chaco | Cotización del Real del Nuevo Banco del Chaco |
-| GET | /api/real/bancos/piano | Cotización del Banco Piano |
-| GET | /api/real/bancos/ciudad | Cotización del Banco Ciudad |
-| GET | /api/real/bancos/supervielle | Cotización del Banco Supervielle |
+
+| Método | Endpoint                     | Descripción                                   |
+| ------ | ---------------------------- | --------------------------------------------- |
+| GET    | /api/real/oficial            | Cotización del Real oficial                   |
+| GET    | /api/real/blue               | Cotización del Real blue                      |
+| GET    | /api/real/ahorro             | Cotización del Real ahorro                    |
+| GET    | /api/real/tarjeta            | Cotización del Real tarjeta                   |
+| GET    | /api/real/bancos/nacion      | Cotización del Real del Banco Nación          |
+| GET    | /api/real/bancos/bbva        | Cotización del Real del Banco BBVA            |
+| GET    | /api/real/bancos/chaco       | Cotización del Real del Nuevo Banco del Chaco |
+| GET    | /api/real/bancos/piano       | Cotización del Banco Piano                    |
+| GET    | /api/real/bancos/ciudad      | Cotización del Banco Ciudad                   |
+| GET    | /api/real/bancos/supervielle | Cotización del Banco Supervielle              |
 
 #### Respuestas
 
 ###### Genéricos
+
 ```javascript
 {
     fecha: "2021/07/08 00:24:03",
@@ -143,6 +154,7 @@
 ```
 
 ###### Bancos
+
 ```javascript
 {
     fecha: "2020/06/21 23:26:42",
@@ -152,39 +164,40 @@
 }
 ```
 
-***
+---
 
 ### Otras monedas del mundo
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/monedas/lista | Obtiene la lista de monedas disponibles para su consulta |
-| GET | /api/monedas/valor/`<code>` | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
-| GET | /api/monedas/historico/`<code>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
+
+| Método | Endpoint                        | Descripción                                                                                                                          |
+| ------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| GET    | /api/monedas/lista              | Obtiene la lista de monedas disponibles para su consulta                                                                             |
+| GET    | /api/monedas/valor/`<code>`     | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas                      |
+| GET    | /api/monedas/historico/`<code>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
 
 #### Respuestas
 
 ###### Lista de monedas
+
 ```javascript
 [
-    {
-        code: "AED",
-        name: "United Arab Emirates Dirham",
-    },
-    {
-        code: "AFN",
-        name: "Afghan Afghani"
-    },
+  {
+    code: "AED",
+    name: "United Arab Emirates Dirham",
+  },
+  {
+    code: "AFN",
+    name: "Afghan Afghani",
+  },
 
-    ...
-
-    {
-        code: "JPY",
-        name: "Japanese Yen"
-    }
-]
+  ...{
+    code: "JPY",
+    name: "Japanese Yen",
+  },
+];
 ```
 
 ###### Valor
+
 ```javascript
 {
     fecha: "2021/07/22 23:43:28",
@@ -193,68 +206,68 @@
 ```
 
 ###### Histórico
+
 ```javascript
 [
-    {
-        fecha: "2006/05/16",
-        valor: "3.03",
-    },
-    {
-        fecha: "2006/05/17",
-        valor: "3.04",
-    },
+  {
+    fecha: "2006/05/16",
+    valor: "3.03",
+  },
+  {
+    fecha: "2006/05/17",
+    valor: "3.04",
+  },
 
-    ...
-
-    {
-        fecha: "2015/09/19",
-        valor: "9.37",
-    }
-]
+  ...{
+    fecha: "2015/09/19",
+    valor: "9.37",
+  },
+];
 ```
 
-***
+---
 
 ### Crypto
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/crypto/list | Obtiene la lista de criptomonedas disponibles para su consulta |
-| GET | /api/crypto/bitcoin | Valor del Bitcoin (BTC) |
-| GET | /api/crypto/bitcoincash | Valor del Bitcoin Cash (BCH) |
-| GET | /api/crypto/ethereum | Valor del Ethereum (ETH) |
-| GET | /api/crypto/monero | Valor del Monero (XMR) |
-| GET | /api/crypto/litecoin | Valor del Litecoin (LTC) |
-| GET | /api/crypto/ripple | Valor del Ripple (XRP) |
-| GET | /api/crypto/dash | Valor del DASH (DASH) |
-| GET | /api/crypto/`<code>` | Valor de la criptomoneda especificada.<br />Debe ser un código válido de la lista de criptomonedas |
+
+| Método | Endpoint                | Descripción                                                                                        |
+| ------ | ----------------------- | -------------------------------------------------------------------------------------------------- |
+| GET    | /api/crypto/list        | Obtiene la lista de criptomonedas disponibles para su consulta                                     |
+| GET    | /api/crypto/bitcoin     | Valor del Bitcoin (BTC)                                                                            |
+| GET    | /api/crypto/bitcoincash | Valor del Bitcoin Cash (BCH)                                                                       |
+| GET    | /api/crypto/ethereum    | Valor del Ethereum (ETH)                                                                           |
+| GET    | /api/crypto/monero      | Valor del Monero (XMR)                                                                             |
+| GET    | /api/crypto/litecoin    | Valor del Litecoin (LTC)                                                                           |
+| GET    | /api/crypto/ripple      | Valor del Ripple (XRP)                                                                             |
+| GET    | /api/crypto/dash        | Valor del DASH (DASH)                                                                              |
+| GET    | /api/crypto/`<code>`    | Valor de la criptomoneda especificada.<br />Debe ser un código válido de la lista de criptomonedas |
 
 #### Respuestas
 
 ###### Lista de criptomonedas
+
 ```javascript
 [
-    {
-        code: "bitcoin",
-        name: "Bitcoin",
-        symbol: "BTC"
-    },
-    {
-        code: "cardano",
-        name: "Cardano",
-        symbol: "ADA"
-    },
+  {
+    code: "bitcoin",
+    name: "Bitcoin",
+    symbol: "BTC",
+  },
+  {
+    code: "cardano",
+    name: "Cardano",
+    symbol: "ADA",
+  },
 
-    ...
-
-    {
-        code: "ethereum",
-        name: "Ethereum",
-        symbol: "ETH"
-    }
-]
+  ...{
+    code: "ethereum",
+    name: "Ethereum",
+    symbol: "ETH",
+  },
+];
 ```
 
 ###### Moneda
+
 ```javascript
 {
     name: "Bitcoin",
@@ -269,14 +282,15 @@
 }
 ```
 
-***
+---
 
 ### Metales
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/metales/oro | Valor internacional del Oro |
-| GET | /api/metales/plata | Valor internacional de la Plata |
-| GET | /api/metales/cobre | Valor internacional del Cobre |
+
+| Método | Endpoint           | Descripción                     |
+| ------ | ------------------ | ------------------------------- |
+| GET    | /api/metales/oro   | Valor internacional del Oro     |
+| GET    | /api/metales/plata | Valor internacional de la Plata |
+| GET    | /api/metales/cobre | Valor internacional del Cobre   |
 
 #### Respuestas
 
@@ -289,13 +303,13 @@
 }
 ```
 
-***
+---
 
 ### Venezuela
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/vzla/dolar | Cotizaciones del dólar en bolívares (VEF) |
-| GET | /api/vzla/euro | Cotizaciones del Euro en bolívares (VEF) |
+
+| Método | Endpoint        | Descripción                               |
+| ------ | --------------- | ----------------------------------------- |
+| GET    | /api/vzla/dolar | Cotizaciones del dólar en bolívares (VEF) |
 
 #### Respuestas
 
@@ -304,30 +318,33 @@
     fecha: "2021/01/07 19:33:21",
     paralelo: "1446012.11",
     bancos: "1231206.11",
-    cucuta: "87750.00",
     moneda: "USD"
 }
 ```
 
-***
+---
 
 ### Indicadores BCRA
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/bcra/riesgopais | Valor del Riesgo País |
-| GET | /api/bcra/reservas | Reservas del BCRA en dólares |
-| GET | /api/bcra/circulante | Total de pesos en circulación |
+
+| Método | Endpoint             | Descripción                   |
+| ------ | -------------------- | ----------------------------- |
+| GET    | /api/bcra/riesgopais | Valor del Riesgo País         |
+| GET    | /api/bcra/reservas   | Reservas del BCRA en dólares  |
+| GET    | /api/bcra/circulante | Total de pesos en circulación |
 
 #### Respuestas
 
 ##### Riesgo país
+
 ```javascript
 {
     fecha: "2020/11/22 19:58:37",
     valor: "1245"
 }
 ```
+
 ##### Reservas y circulante
+
 ```javascript
 {
     fecha: "2020/11/22 19:58:37",
@@ -337,17 +354,19 @@
 ```
 
 ### Evolución histórica
-| Método | Endpoint | Descripción |
-| ------ | ------ | ------ |
-| GET | /api/evolucion/dolar/oficial | Evolución mensual anualizada del Dólar oficial |
-| GET | /api/evolucion/dolar/ahorro | Evolución mensual anualizada del Dólar ahorro |
-| GET | /api/evolucion/dolar/blue | Evolución mensual anualizada del Dólar blue |
-| GET | /api/evolucion/real/oficial | Evolución mensual anualizada del Real oficial |
-| GET | /api/evolucion/real/ahorro | Evolución mensual anualizada del Real ahorro |
-| GET | /api/evolucion/euro/oficial | Evolución mensual anualizada del Euro oficial |
-| GET | /api/evolucion/euro/ahorro | Evolución mensual anualizada del Euro ahorro |
+
+| Método | Endpoint                     | Descripción                                    |
+| ------ | ---------------------------- | ---------------------------------------------- |
+| GET    | /api/evolucion/dolar/oficial | Evolución mensual anualizada del Dólar oficial |
+| GET    | /api/evolucion/dolar/ahorro  | Evolución mensual anualizada del Dólar ahorro  |
+| GET    | /api/evolucion/dolar/blue    | Evolución mensual anualizada del Dólar blue    |
+| GET    | /api/evolucion/real/oficial  | Evolución mensual anualizada del Real oficial  |
+| GET    | /api/evolucion/real/ahorro   | Evolución mensual anualizada del Real ahorro   |
+| GET    | /api/evolucion/euro/oficial  | Evolución mensual anualizada del Euro oficial  |
+| GET    | /api/evolucion/euro/ahorro   | Evolución mensual anualizada del Euro ahorro   |
 
 #### Respuestas
+
 ```javascript
 {
     fecha: "2020/11/22 19:59:46",
@@ -385,19 +404,22 @@
 ```
 
 ## Integraciones
+
+- [BluePy](https://github.com/guidospadavecchia/BluePy)
 - [DolarSí](https://www.dolarsi.com/api/dolarSiInfo.xml)
-- [DolarToday](https://dolartoday.com/api/)
-- [BluePy](https://github.com/flechajm/BluePy)
 - [CoinGecko](https://www.coingecko.com/es/api)
 - [ExchangeRate.host](https://exchangerate.host/)
 
 ## Agradecimientos
+
 - [@Castrogiovanni20](https://github.com/Castrogiovanni20) - Por proveer el código del proyecto original y permitirme usar su API libremente.
 
 ## Licencia
-**DolarBot-API** es *open-source*, libre y gratuita. Está licenciada bajo la [MIT License](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/LICENSE).
 
-## 
+**DolarBot-API** es _open-source_, libre y gratuita. Está licenciada bajo la [MIT License](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/LICENSE).
+
+##
+
 <p align="center">
   <img src="http://ForTheBadge.com/images/badges/built-with-love.svg">
 </p>

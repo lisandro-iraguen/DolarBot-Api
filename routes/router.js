@@ -43,7 +43,7 @@ const bancoInstance = new bancoController(dolarSiServiceInstance);
 const riesgoInstance = new riesgoController(dolarSiServiceInstance);
 const bcraInstance = new bcraController(dolarSiServiceInstance);
 const metalesInstance = new metalesController(dolarSiServiceInstance);
-const vzlaInstance = new vzlaController(dolarTodayServiceInstance);
+const vzlaInstance = new vzlaController(bluePyServiceInstance);
 const cryptoInstance = new cryptoController(coinGeckoInstance);
 const currencyInstance = new currencyController(exchangeRateHostInstance);
 
@@ -165,6 +165,5 @@ router.get('/api/crypto/:coinId', cryptoInstance.getCoin);
  * @description Rutas Venezuela
  */
 router.get('/api/vzla/dolar', vzlaInstance.getDolarVzla)
-router.get('/api/vzla/euro', vzlaInstance.getEuroVzla)
 
 module.exports = router

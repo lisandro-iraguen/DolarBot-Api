@@ -8,6 +8,8 @@ const EURO_OFICIAL = '/api/euro/oficial';
 const EURO_BLUE = '/api/euro/blue';
 const REAL_OFICIAL = '/api/real/oficial';
 const REAL_BLUE = '/api/real/blue';
+const DOLAR_VZLA_OFICIAL = '/api/venezuela/dolar/oficial';
+const DOLAR_VZLA_PARALELO = '/api/venezuela/dolar/paralelo';
 
 class bluePyService {
     constructor(cache) {
@@ -93,6 +95,30 @@ class bluePyService {
     getRealBlue = async (_req, res) => {
         try {
             return this._fetchData(REAL_BLUE);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del par Bolivar-Dólar oficial
+     */
+    getVzlaDolarOficial = async (_req, res) => {
+        try {
+            return this._fetchData(DOLAR_VZLA_OFICIAL);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del par Bolivar-Dólar paralelo
+     */
+     getVzlaDolarParalelo = async (_req, res) => {
+        try {
+            return this._fetchData(DOLAR_VZLA_PARALELO);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
