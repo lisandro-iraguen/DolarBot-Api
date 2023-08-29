@@ -13,13 +13,11 @@ const exchangeRateHostCache = new NodeCache({ stdTTL: exchangeRateHostSeconds, c
 
 //Services
 const dolarSiService = require('../services/dolarSiService');
-const dolarTodayService = require('../services/dolarTodayService');
 const bluePyService = require('../services/bluePyService');
 const coinGeckoService = require('../services/coinGeckoService');
 const exchangeRateHostService = require('../services/exchangeRateHostService');
 
 const dolarSiServiceInstance = new dolarSiService(defaultCache);
-const dolarTodayServiceInstance = new dolarTodayService(defaultCache);
 const bluePyServiceInstance = new bluePyService(defaultCache);
 const coinGeckoInstance = new coinGeckoService(cryptoCache);
 const exchangeRateHostInstance = new exchangeRateHostService(exchangeRateHostCache);
