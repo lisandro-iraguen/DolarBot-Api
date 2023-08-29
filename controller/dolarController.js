@@ -14,13 +14,8 @@ class dolarController {
      */
     getDolarOficial = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text),
-            }
-            res.send(valores);
+            const data = await this.bluePyService.getDolarOficial();
+            res.send(data);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
@@ -33,15 +28,8 @@ class dolarController {
      */
     getDolarAhorro = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const taxPercent = parseInt(config.taxPercent.ahorro);
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text, 2, taxPercent)
-            }
-
-            res.send(valores);
+            const data = await this.bluePyService.getDolarTurista();
+            res.send(data);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
@@ -54,12 +42,12 @@ class dolarController {
      */
     getDolarTarjeta = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
+            const data = await this.bluePyService.getDolarOficial();
             const taxPercent = parseInt(config.taxPercent.tarjeta);
             const valores = {
                 fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.Dolar.casa344.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Dolar.casa344.venta._text, 2, taxPercent)
+                compra: this.util.formatCurrency(data.compra),
+                venta: this.util.formatCurrency(data.venta, 2, taxPercent)
             }
 
             res.send(valores);
@@ -76,17 +64,11 @@ class dolarController {
      */
     getDolarBlue = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.Dolar.casa380.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Dolar.casa380.venta._text)
-            }
-
-            res.send(valores);
+            const data = await this.bluePyService.getDolarBlue();
+            res.send(data);
         } catch (e) {
-            res.sendStatus(500);
             console.log(e);
+            res.sendStatus(500);
         }
     }
 
@@ -97,17 +79,11 @@ class dolarController {
      */
     getContadoConLiqui = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.valores_principales.casa312.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.valores_principales.casa312.venta._text)
-            }
-
-            res.send(valores);
+            const data = await this.bluePyService.getDolarCcl();
+            res.send(data);
         } catch (e) {
-            res.sendStatus(500);
             console.log(e);
+            res.sendStatus(500);
         }
     }
 
@@ -139,17 +115,11 @@ class dolarController {
      */
     getDolarBolsa = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.valores_principales.casa313.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.valores_principales.casa313.venta._text)
-            }
-
-            res.send(valores);
+            const data = await this.bluePyService.getDolarMep();
+            res.send(data);
         } catch (e) {
-            res.sendStatus(500);
             console.log(e);
+            res.sendStatus(500);
         }
     }
 

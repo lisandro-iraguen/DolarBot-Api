@@ -4,8 +4,12 @@ const baseUrl = "https://bluepy.vercel.app/";
 
 const DOLAR_OFICIAL = '/api/dolar/oficial';
 const DOLAR_BLUE = '/api/dolar/blue';
+const DOLAR_TURISTA = '/api/dolar/turista';
+const DOLAR_MEP = '/api/dolar/mep';
+const DOLAR_CCL = '/api/dolar/ccl';
 const EURO_OFICIAL = '/api/euro/oficial';
 const EURO_BLUE = '/api/euro/blue';
+const EURO_TARJETA = '/api/euro/tarjeta';
 const REAL_OFICIAL = '/api/real/oficial';
 const REAL_BLUE = '/api/real/blue';
 const DOLAR_VZLA_OFICIAL = '/api/venezuela/dolar/oficial';
@@ -54,6 +58,42 @@ class bluePyService {
     }
 
     /**
+     * @description Obtener el valor del Dólar turista
+     */
+     getDolarTurista = async (_req, res) => {
+        try {
+            return this._fetchData(DOLAR_TURISTA);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del Dólar MEP
+     */
+     getDolarMep = async (_req, res) => {
+        try {
+            return this._fetchData(DOLAR_MEP);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del Dólar CCL
+     */
+     getDolarCcl = async (_req, res) => {
+        try {
+            return this._fetchData(DOLAR_CCL);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+     }
+
+    /**
      * @description Obtener el valor del Euro oficial
      */
     getEuroOficial = async (_req, res) => {
@@ -71,6 +111,18 @@ class bluePyService {
     getEuroBlue = async (_req, res) => {
         try {
             return this._fetchData(EURO_BLUE);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del Euro tarjeta
+     */
+    getEuroTarjeta = async (_req, res) => {
+        try {
+            return this._fetchData(EURO_TARJETA);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
