@@ -16,8 +16,8 @@ class vzlaController {
             const dataParalelo = await this.bluePyService.getVzlaDolarParalelo();
             const valores = {
                 fecha: this.util.getDateTime(),
-                paralelo: this.util.formatCurrency(dataOficial.valor.toString()),
-                bancos: this.util.formatCurrency(dataParalelo.valor.toString()),
+                paralelo: this.util.formatCurrency(dataParalelo.valor.toString()),
+                bancos: this.util.formatCurrency(dataOficial.valor.toString()),
                 moneda: 'USD',
             };
 
