@@ -421,8 +421,14 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 
 **DolarBot-API** es _open-source_, libre y gratuita. Está licenciada bajo la [MIT License](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/LICENSE).
 
+## Contribuciones
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_6.svg)](https://cafecito.app/gspadavecchia)  
+
 ##
 
 <p align="center">
-  <img src="http://ForTheBadge.com/images/badges/built-with-love.svg">
+  Hecho con 💙 en <b><a href="https://nodejs.org/en">node.js</a></b>
+</p>
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/590px-Node.js_logo.svg.png?20170401104355" width="113px">
 </p>
