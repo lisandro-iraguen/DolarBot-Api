@@ -1,12 +1,13 @@
 {
   "name": "dolarbot-api",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "main": "index.js",
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
   "taxPercent": {
-    "ahorro": 65,
-    "tarjeta": 100
+    "ahorro": 75,
+    "tarjeta": 75,
+    "qatar": 80
   },
   "cacheTTLSeconds": {
     "default": 300,

@@ -33,12 +33,11 @@ class euroController {
      */
     getEuroAhorro = async (_req, res) => {
         try {
-            const data = await this.bluePyService.getEuroOficial();
-            const taxPercent = parseInt(config.taxPercent.ahorro);
+            const data = await this.bluePyService.getEuroTarjeta();
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: data.compra,
-                venta: this.util.formatCurrency(data.venta.toString(), 2, taxPercent),
+                venta: data.venta,
             }
             res.send(valores);
         } catch (e) {
@@ -53,8 +52,27 @@ class euroController {
      */
     getEuroTarjeta = async (_req, res) => {
         try {
+            const data = await this.bluePyService.getEuroTarjeta();
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: data.compra,
+                venta: data.venta,
+            }
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del euro qatar
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getEuroQatar = async (_req, res) => {
+        try {
             const data = await this.bluePyService.getEuroOficial();
-            const taxPercent = parseInt(config.taxPercent.tarjeta);
+            const taxPercent = parseInt(config.taxPercent.qatar);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: data.compra,
@@ -65,7 +83,7 @@ class euroController {
             console.log(e);
             res.sendStatus(500);
         }
-    }
+    }    
 
     /**
      * @description Obtener el valor del euro blue

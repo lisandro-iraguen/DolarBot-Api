@@ -42,8 +42,22 @@ class dolarController {
      */
     getDolarTarjeta = async (_req, res) => {
         try {
+            const data = await this.bluePyService.getDolarTurista();
+            res.send(data);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }
+
+    /**
+     * @description Obtener el valor del dolar qatar
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getDolarQatar = async (_req, res) => {
+        try {
             const data = await this.bluePyService.getDolarOficial();
-            const taxPercent = parseInt(config.taxPercent.tarjeta);
+            const taxPercent = parseInt(config.taxPercent.qatar);
             const valores = {
                 fecha: this.util.getDateTime(),
                 compra: this.util.formatCurrency(data.compra),
@@ -55,7 +69,7 @@ class dolarController {
             console.log(e);
             res.sendStatus(500);
         }
-    }
+    }    
 
 
     /**

@@ -68,6 +68,26 @@ class realController {
     }
 
     /**
+     * @description Obtener el valor del real qatar
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getRealQatar = async (_req, res) => {
+        try {
+            const data = await this.bluePyService.getRealOficial();
+            const taxPercent = parseInt(config.taxPercent.qatar);
+            const valores = {
+                fecha: this.util.getDateTime(),
+                compra: data.compra,
+                venta: this.util.formatCurrency(data.venta.toString(), 2, taxPercent),
+            }
+            res.send(valores);
+        } catch (e) {
+            console.log(e);
+            res.sendStatus(500);
+        }
+    }    
+
+    /**
      * @description Obtener el valor del real blue
      * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
      */
