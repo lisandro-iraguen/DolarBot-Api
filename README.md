@@ -38,8 +38,10 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/dolar/bancos/bbva        | Cotización del dólar de Banco BBVA            |
 | GET    | /api/dolar/bancos/piano       | Cotización del dólar de Banco Piano           |
 | GET    | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario     |
+| GET    | /api/dolar/bancos/hsbc        | Cotización del dólar de Banco HSBC            |
 | GET    | /api/dolar/bancos/galicia     | Cotización del dólar de Banco Galicia         |
 | GET    | /api/dolar/bancos/santander   | Cotización del dólar de Banco Santander       |
+| GET    | /api/dolar/bancos/macro       | Cotización del dólar de Banco Macro           |
 | GET    | /api/dolar/bancos/ciudad      | Cotización del dólar de Banco Ciudad          |
 | GET    | /api/dolar/bancos/supervielle | Cotización del dólar de Banco Supervielle     |
 | GET    | /api/dolar/bancos/patagonia   | Cotización del dólar de Banco Patagonia       |
@@ -51,6 +53,7 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/dolar/bancos/pampa       | Cotización del dólar de Banco de La Pampa     |
 | GET    | /api/dolar/bancos/provincia   | Cotización del dólar de Banco Provincia       |
 | GET    | /api/dolar/bancos/icbc        | Cotización del dólar de Banco ICBC            |
+| GET    | /api/dolar/bancos/brubank     | Cotización del dólar de Brubank               |
 | GET    | /api/dolar/bancos/reba        | Cotización del dólar de Rebanking             |
 | GET    | /api/dolar/bancos/roela       | Cotización del dólar de Banco Roela           |
 
@@ -422,7 +425,8 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 **DolarBot-API** es _open-source_, libre y gratuita. Está licenciada bajo la [MIT License](https://github.com/guidospadavecchia/DolarBot-Api/blob/master/LICENSE).
 
 ## Contribuciones
-[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_6.svg)](https://cafecito.app/gspadavecchia)  
+
+[![Invitame un café en cafecito.app](https://cdn.cafecito.app/imgs/buttons/button_6.svg)](https://cafecito.app/gspadavecchia)
 
 ##
 

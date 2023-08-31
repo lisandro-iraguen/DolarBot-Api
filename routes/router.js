@@ -12,15 +12,17 @@ const cryptoCache = new NodeCache({ stdTTL: cryptoCacheSeconds, checkperiod: cry
 const exchangeRateHostCache = new NodeCache({ stdTTL: exchangeRateHostSeconds, checkperiod: exchangeRateHostSeconds * 0.2, useClones: false });
 
 //Services
-const dolarSiService = require('../services/dolarSiService');
-const bluePyService = require('../services/bluePyService');
-const coinGeckoService = require('../services/coinGeckoService');
-const exchangeRateHostService = require('../services/exchangeRateHostService');
+const dolarSi = require('../services/dolarSiService');
+const bluePy = require('../services/bluePyService');
+const cryptoYa = require('../services/cryptoYaService');
+const coinGecko = require('../services/coinGeckoService');
+const exchangeRateHost = require('../services/exchangeRateHostService');
 
-const dolarSiServiceInstance = new dolarSiService(defaultCache);
-const bluePyServiceInstance = new bluePyService(defaultCache);
-const coinGeckoInstance = new coinGeckoService(cryptoCache);
-const exchangeRateHostInstance = new exchangeRateHostService(exchangeRateHostCache);
+const dolarSiService = new dolarSi(defaultCache);
+const bluePyService = new bluePy(defaultCache);
+const cryptoYaService = new cryptoYa(defaultCache);
+const coinGeckoService = new coinGecko(cryptoCache);
+const exchangeRateHostService = new exchangeRateHost(exchangeRateHostCache);
 
 //Controllers
 const dolarController = require('../controller/dolarController');
@@ -34,16 +36,16 @@ const vzlaController = require('../controller/vzlaController');
 const cryptoController = require('../controller/cryptoController');
 const currencyController = require('../controller/currencyController');
 
-const dolarInstance = new dolarController(dolarSiServiceInstance, bluePyServiceInstance);
-const euroInstance = new euroController(dolarSiServiceInstance, bluePyServiceInstance);
-const realInstance = new realController(dolarSiServiceInstance, bluePyServiceInstance);
-const bancoInstance = new bancoController(dolarSiServiceInstance);
-const riesgoInstance = new riesgoController(dolarSiServiceInstance);
-const bcraInstance = new bcraController(dolarSiServiceInstance);
-const metalesInstance = new metalesController(dolarSiServiceInstance);
-const vzlaInstance = new vzlaController(bluePyServiceInstance);
-const cryptoInstance = new cryptoController(coinGeckoInstance);
-const currencyInstance = new currencyController(exchangeRateHostInstance);
+const dolarInstance = new dolarController(dolarSiService, bluePyService);
+const euroInstance = new euroController(dolarSiService, bluePyService);
+const realInstance = new realController(dolarSiService, bluePyService);
+const bancoInstance = new bancoController(dolarSiService, cryptoYaService);
+const riesgoInstance = new riesgoController(dolarSiService);
+const bcraInstance = new bcraController(dolarSiService);
+const metalesInstance = new metalesController(dolarSiService);
+const vzlaInstance = new vzlaController(bluePyService);
+const cryptoInstance = new cryptoController(coinGeckoService);
+const currencyInstance = new currencyController(exchangeRateHostService);
 
 /**
  * @description Status
@@ -64,10 +66,12 @@ router.get('/api/dolar/bolsa', dolarInstance.getDolarBolsa);
 router.get('/api/dolar/bancos/bbva', bancoInstance.getDolarBBVA);
 router.get('/api/dolar/bancos/piano', bancoInstance.getDolarPiano);
 router.get('/api/dolar/bancos/hipotecario', bancoInstance.getDolarHipotecario);
+router.get('/api/dolar/bancos/hsbc', bancoInstance.getDolarHSBC);
 router.get('/api/dolar/bancos/galicia', bancoInstance.getDolarGalicia);
 router.get('/api/dolar/bancos/santander', bancoInstance.getDolarSantander);
 router.get('/api/dolar/bancos/ciudad', bancoInstance.getDolarCiudad);
 router.get('/api/dolar/bancos/supervielle', bancoInstance.getDolarSupervielle);
+router.get('/api/dolar/bancos/macro', bancoInstance.getDolarMacro);
 router.get('/api/dolar/bancos/patagonia', bancoInstance.getDolarPatagonia);
 router.get('/api/dolar/bancos/comafi', bancoInstance.getDolarComafi);
 router.get('/api/dolar/bancos/nacion', bancoInstance.getDolarNacion);
@@ -76,6 +80,7 @@ router.get('/api/dolar/bancos/pampa', bancoInstance.getDolarPampa);
 router.get('/api/dolar/bancos/bancor', bancoInstance.getDolarBancor);
 router.get('/api/dolar/bancos/provincia', bancoInstance.getDolarProvincia);
 router.get('/api/dolar/bancos/icbc', bancoInstance.getDolarICBC);
+router.get('/api/dolar/bancos/brubank', bancoInstance.getDolarBrubank);
 router.get('/api/dolar/bancos/reba', bancoInstance.getDolarRebanking);
 router.get('/api/dolar/bancos/roela', bancoInstance.getDolarRoela);
 

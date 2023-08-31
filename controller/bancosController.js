@@ -2,8 +2,9 @@ const util = require("../util/util");
 const config = require('../package.json');
 
 class bancosController {
-    constructor(dolarSiService) {
+    constructor(dolarSiService, cryptoYaService) {
         this.dolarSiService = dolarSiService;
+        this.cryptoYaService = cryptoYaService;
         this.util = new util();
     }
 
@@ -80,13 +81,12 @@ class bancosController {
      */
     getDolarGalicia = async (_req, res) => {
         try {
-            const data = await this.dolarSiService.getInfoDolar();
-            const taxPercent = parseInt(config.taxPercent.ahorro);
+            const data = await this.cryptoYaService.getDolarGalicia();
             const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.compra._text),
-                venta: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.venta._text),
-                ventaAhorro: this.util.formatCurrency(data.cotiza.Capital_Federal.casa342.venta._text, 2, taxPercent),
+                fecha: this.util.getDateTimeFromUnix(data.time),
+                compra: this.util.formatCurrency(data.bid.toString()),
+                venta: this.util.formatCurrency(data.ask.toString()),
+                ventaAhorro: this.util.formatCurrency(data.totalAsk.toString()),
             }
             res.send(valores)
         } catch (e) {
@@ -95,6 +95,65 @@ class bancosController {
         }
     }
 
+    /**
+     * @description Obtener las cotizaciones del Banco HSBC
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getDolarHSBC = async (_req, res) => {
+        try {
+            const data = await this.cryptoYaService.getDolarHSBC();
+            const valores = {
+                fecha: this.util.getDateTimeFromUnix(data.time),
+                compra: this.util.formatCurrency(data.bid.toString()),
+                venta: this.util.formatCurrency(data.ask.toString()),
+                ventaAhorro: this.util.formatCurrency(data.totalAsk.toString()),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }    
+
+    /**
+     * @description Obtener las cotizaciones del Banco Macro
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getDolarMacro = async (_req, res) => {
+        try {
+            const data = await this.cryptoYaService.getDolarMacro();
+            const valores = {
+                fecha: this.util.getDateTimeFromUnix(data.time),
+                compra: this.util.formatCurrency(data.bid.toString()),
+                venta: this.util.formatCurrency(data.ask.toString()),
+                ventaAhorro: this.util.formatCurrency(data.totalAsk.toString()),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }   
+    
+    /**
+     * @description Obtener las cotizaciones del Banco Brubank
+     * @returns Un objeto con el valor de compra, el de venta y la fecha y hora de la consulta
+     */
+     getDolarBrubank = async (_req, res) => {
+        try {
+            const data = await this.cryptoYaService.getDolarBrubank();
+            const valores = {
+                fecha: this.util.getDateTimeFromUnix(data.time),
+                compra: this.util.formatCurrency(data.bid.toString()),
+                venta: this.util.formatCurrency(data.ask.toString()),
+                ventaAhorro: this.util.formatCurrency(data.totalAsk.toString()),
+            }
+            res.send(valores)
+        } catch (e) {
+            res.sendStatus(500)
+            console.log(e)
+        }
+    }     
 
     /**
      * @description Obtener las cotizaciones del Banco Santander

@@ -40,6 +40,11 @@ class util {
     getDateTime = () => moment().tz(timezone).format('yyyy/MM/DD HH:mm:ss');
 
     /**
+     * Obtiene la fecha y hora formateada.
+     */
+    getDateTimeFromUnix = (unix) => moment(unix * 1000).tz(timezone).format('yyyy/MM/DD HH:mm:ss');
+
+    /**
      * Obtiene la fecha actual formateada.
      */
     getDate = () => moment().tz(timezone).format('yyyy/MM/DD');
@@ -77,20 +82,21 @@ class util {
      */
     formatCurrency = (value, decimalPlaces, taxPercent = null) => {
         const decimals = decimalPlaces || 2;
-        let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
-        if (!isNaN(convertedValue)) {
-            if (decimals == 2 && convertedValue < 0.01) {
-                convertedValue = Math.ceil(convertedValue * 100) / 100;
-            }
-            if (taxPercent != null && taxPercent > 0) {
-                return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
-            } else {
-                return convertedValue.toFixed(decimals);
+        if(value && value !== null && value !== 'No Cotiza') {
+            let convertedValue = parseFloat(value.includes(',') ? value.replace('.', '').replace(',', '.') : value);
+            if (!isNaN(convertedValue)) {
+                if (decimals == 2 && convertedValue < 0.01) {
+                    convertedValue = Math.ceil(convertedValue * 100) / 100;
+                }
+                if (taxPercent != null && taxPercent > 0) {
+                    return (convertedValue * (1 + (taxPercent / 100))).toFixed(decimals);
+                } else {
+                    return convertedValue.toFixed(decimals);
+                }
             }
         }
-        else {
-            return '?';
-        }
+
+        return '?';
     }
 
     /**
