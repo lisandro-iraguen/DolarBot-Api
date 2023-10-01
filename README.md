@@ -35,6 +35,7 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/dolar/contadoliqui       | Cotización dólar contado con liqui            |
 | GET    | /api/dolar/promedio           | Cotización dólar promedio                     |
 | GET    | /api/dolar/bolsa              | Cotización dólar bolsa                        |
+| GET    | /api/dolar/bancos/all         | Cotización del todos los bancos               |
 | GET    | /api/dolar/bancos/bbva        | Cotización del dólar de Banco BBVA            |
 | GET    | /api/dolar/bancos/piano       | Cotización del dólar de Banco Piano           |
 | GET    | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario     |
@@ -73,6 +74,8 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 
 ```javascript
 {
+    nombre: 'BBVA',
+    descripcion: 'Banco BBVA',
     fecha: "2020/06/21 23:26:42",
     compra: "89.02",
     venta: "92.02",
@@ -122,6 +125,8 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 
 ```javascript
 {
+    nombre: 'BBVA',
+    descripcion: 'Banco BBVA',
     fecha: "2020/06/21 23:26:42",
     compra: "126.45",
     venta: "134.67",
@@ -163,6 +168,8 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 
 ```javascript
 {
+    nombre: 'BBVA',
+    descripcion: 'Banco BBVA',
     fecha: "2020/06/21 23:26:42",
     compra: "13.18",
     venta: "14.96",
