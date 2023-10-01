@@ -35,7 +35,7 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/dolar/contadoliqui       | Cotización dólar contado con liqui            |
 | GET    | /api/dolar/promedio           | Cotización dólar promedio                     |
 | GET    | /api/dolar/bolsa              | Cotización dólar bolsa                        |
-| GET    | /api/dolar/bancos/all         | Cotización del todos los bancos               |
+| GET    | /api/dolar/bancos/all         | Cotización del dólar de todos los bancos      |
 | GET    | /api/dolar/bancos/bbva        | Cotización del dólar de Banco BBVA            |
 | GET    | /api/dolar/bancos/piano       | Cotización del dólar de Banco Piano           |
 | GET    | /api/dolar/bancos/hipotecario | Cotización del dólar de Banco Hipotecario     |
@@ -94,6 +94,7 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/euro/ahorro             | Cotización del Euro ahorro                    |
 | GET    | /api/euro/tarjeta            | Cotización del Euro tarjeta                   |
 | GET    | /api/euro/qatar              | Cotización del Euro Qatar                     |
+| GET    | /api/euro/bancos/all         | Cotización del Euro de todos los bancos       |
 | GET    | /api/euro/bancos/nacion      | Cotización del Euro del Banco Nación          |
 | GET    | /api/euro/bancos/galicia     | Cotización del Euro del Banco Galicia         |
 | GET    | /api/euro/bancos/bbva        | Cotización del Euro del Banco BBVA            |
@@ -145,6 +146,7 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 | GET    | /api/real/ahorro             | Cotización del Real ahorro                    |
 | GET    | /api/real/tarjeta            | Cotización del Real tarjeta                   |
 | GET    | /api/real/qatar              | Cotización del Real Qatar                     |
+| GET    | /api/real/bancos/all         | Cotización del Real de todos los bancos       |
 | GET    | /api/real/bancos/nacion      | Cotización del Real del Banco Nación          |
 | GET    | /api/real/bancos/bbva        | Cotización del Real del Banco BBVA            |
 | GET    | /api/real/bancos/chaco       | Cotización del Real del Nuevo Banco del Chaco |
