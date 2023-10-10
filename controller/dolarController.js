@@ -56,15 +56,8 @@ class dolarController {
      */
      getDolarQatar = async (_req, res) => {
         try {
-            const data = await this.bluePyService.getDolarOficial();
-            const taxPercent = parseInt(config.taxPercent.qatar);
-            const valores = {
-                fecha: this.util.getDateTime(),
-                compra: this.util.formatCurrency(data.compra),
-                venta: this.util.formatCurrency(data.venta, 2, taxPercent)
-            }
-
-            res.send(valores);
+            const data = await this.bluePyService.getDolarTurista();
+            res.send(data);
         } catch (e) {
             console.log(e);
             res.sendStatus(500);
