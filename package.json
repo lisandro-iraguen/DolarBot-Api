@@ -5,9 +5,9 @@
   "gitRepo": "https://github.com/guidospadavecchia/DolarBot-Api",
   "requiresApiKey": true,
   "taxPercent": {
-    "ahorro": 100,
-    "tarjeta": 100,
-    "qatar": 100
+    "ahorro": 155,
+    "tarjeta": 155,
+    "qatar": 155
   },
   "cacheTTLSeconds": {
     "default": 300,
