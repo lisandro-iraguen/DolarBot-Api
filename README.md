@@ -183,11 +183,11 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 
 ### Otras monedas del mundo
 
-| Método | Endpoint                        | Descripción                                                                                                                          |
-| ------ | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| GET    | /api/monedas/lista              | Obtiene la lista de monedas disponibles para su consulta                                                                             |
-| GET    | /api/monedas/valor/`<code>`     | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas                      |
-| GET    | /api/monedas/historico/`<code>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas |
+| Método | Endpoint                                 | Descripción                                                                                                                                                                     |
+| ------ | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| GET    | /api/monedas/lista                       | Obtiene la lista de monedas disponibles para su consulta                                                                                                                        |
+| GET    | /api/monedas/valor/`<code>`              | Valor de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas                                                                 |
+| GET    | /api/monedas/historico/`<code>`/`<date>` | Valores diarios históricos de la moneda especificada contra el Peso Argentino.<br />Debe ser un código válido de la lista de monedas y una fecha válida en formato `yyyy-MM-DD` |
 
 #### Respuestas
 
@@ -223,21 +223,10 @@ _Nota: La APIs hosteadas en "Deployments" de este repositorio son APIs privadas,
 ###### Histórico
 
 ```javascript
-[
-  {
-    fecha: "2006/05/16",
-    valor: "3.03",
-  },
-  {
-    fecha: "2006/05/17",
-    valor: "3.04",
-  },
-
-  ...{
-    fecha: "2015/09/19",
-    valor: "9.37",
-  },
-];
+{
+  fecha: "2006/05/16",
+  valor: "3.03",
+}
 ```
 
 ---

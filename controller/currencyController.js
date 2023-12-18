@@ -1,4 +1,6 @@
-const util = require("../util/util")
+const util = require("../util/util");
+const moment = require('moment-timezone');
+const timezone = 'America/Argentina/Buenos_Aires';
 
 class currencyController {
     constructor(exchangeRateHostService) {
@@ -17,8 +19,7 @@ class currencyController {
                 res.sendStatus(data);
             } else {
                 if(data != null) {
-                    const valores = data.map(x => ({ code: x.code, name: x.description, }));
-                    res.send(valores);
+                    res.send(data);
                 } else {
                     res.sendStatus(500);
                 }
@@ -44,7 +45,7 @@ class currencyController {
                     if(data != null) {
                         const valores = {
                             fecha: this.util.getDateTime(),
-                            valor: this.util.formatCurrency(data.rates.ARS.toString()),
+                            valor: this.util.formatCurrency(Object.values(data.quotes)[0].toString()),
                         }
                         res.send(valores);
                     } else {
@@ -64,11 +65,12 @@ class currencyController {
      * @description Obtiene los valores diarios históricos de la moneda especificada.
      * @returns Una colección de objetos con el día y su valor.
      */
-     getHistoricalValues = async (req, res) => {
+     getHistoricalValue = async (req, res) => {
         try {
             const currencyCode = req.params.code.toLowerCase();
-            if(currencyCode != null && currencyCode != '') {
-                const data = await this.exchangeRateHostService.getHistoricalValues(currencyCode);
+            const date = moment(req.params.date.toLowerCase()).tz(timezone).format('yyyy-MM-DD');
+            if(currencyCode != null && currencyCode != '' && date != null && date != '') {
+                const data = await this.exchangeRateHostService.getHistoricalValue(currencyCode, date);
                 if(typeof data === 'number') {
                     res.sendStatus(data);
                 } else {

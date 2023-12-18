@@ -134,7 +134,7 @@ router.get('/api/real/bancos/supervielle', bancoRealInstance.getRealSupervielle)
  */
 router.get('/api/monedas/lista', currencyInstance.getCurrencyList)
 router.get('/api/monedas/valor/:code', currencyInstance.getCurrencyValue);
-router.get('/api/monedas/historico/:code', currencyInstance.getHistoricalValues);
+router.get('/api/monedas/historico/:code/:date', currencyInstance.getHistoricalValue);
 
 /**
  * @description Rutas Reservas y Circulante

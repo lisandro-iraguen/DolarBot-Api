@@ -1,13 +1,13 @@
 const axios = require('axios')
 const util = require("../util/util")
 
-const BASE_URL = 'https://api.exchangerate.host';
-const ENDPOINT_LATEST = '/latest';
-const ENDPOINT_TIMESERIES = '/timeseries';
-const ENDPOINT_SYMBOLS = '/symbols';
+const BASE_URL = 'http://api.exchangerate.host';
+const API_KEY_ENV_VAR = "DOLARBOT_API_EXCHANGERATEHOST_API_KEY";
+const ENDPOINT_LATEST = '/live';
+const ENDPOINT_HISTORICAL = '/historical';
+const ENDPOINT_SYMBOLS = '/list';
 const BASE_CURRENCY = 'ARS';
 const EXCLUDED_CURRENCIES = ['ARS', 'BTC', 'XAG', 'XAU', 'XDR', 'XPD', 'XPT']
-const TIMESERIES_MIN_YEAR = 2006;
 const ERROR_INVALID_CODE = 'Error: Unsupported currency code';
 
 class exchangeRateHostService {
@@ -17,13 +17,15 @@ class exchangeRateHostService {
     }
 
     _appendUrlParams = (url, params) => {
+        url += '?';
         if (params && params.length > 0) {
-            url += '?';
             params.forEach(x => {
                 url += x.key + '=' + encodeURIComponent(x.value) + '&';
             });
-            url = url.slice(0, url.length - 1);
+            //url = url.slice(0, url.length - 1);
         }
+
+        url += "access_key" + '=' + process.env[API_KEY_ENV_VAR] ?? '';
         return url;
     }
 
@@ -47,7 +49,7 @@ class exchangeRateHostService {
         try {
             const response = await this._fetchData(ENDPOINT_SYMBOLS);
             if (response.success) {
-                return Object.values(response.symbols).filter(x => !EXCLUDED_CURRENCIES.includes(x.code));
+                return Object.entries(response.currencies).map(([key, value]) => ({ code: key, name: value, })).filter(x => !EXCLUDED_CURRENCIES.includes(x.code));    
             } else {
                 return null;
             }
@@ -65,8 +67,8 @@ class exchangeRateHostService {
             if (!EXCLUDED_CURRENCIES.includes(currencyCode.toUpperCase())) {
                 const response = await this._fetchData(ENDPOINT_LATEST,
                     [
-                        { key: 'base', value: currencyCode },
-                        { key: 'symbols', value: BASE_CURRENCY }
+                        { key: 'source', value: currencyCode },
+                        { key: 'currencies', value: BASE_CURRENCY }
                     ]);
                 if (response.success) {
                     return response;
@@ -82,49 +84,21 @@ class exchangeRateHostService {
         }
     }
 
-    getHistoricalValues = async (currencyCode) => {
+    getHistoricalValue = async (currencyCode, date) => {
         try {
             if (!EXCLUDED_CURRENCIES.includes(currencyCode.toUpperCase())) {
-                const startYear = TIMESERIES_MIN_YEAR;
-                const endYear = parseInt(this.util.getDate().split('/')[0]);
-
-                let parallelTasks = [];
-                for (let currentYear = startYear; currentYear <= endYear; currentYear++) {
-                    const startDate = currentYear.toString() + '-01-01';
-                    const endDate = currentYear == endYear ? this.util.replaceAll(this.util.getDate(), '/', '-') : currentYear.toString() + '-12-31';
-                    const fetchTask = this._fetchData(ENDPOINT_TIMESERIES,
-                        [
-                            { key: 'base', value: currencyCode },
-                            { key: 'symbols', value: BASE_CURRENCY },
-                            { key: 'start_date', value: startDate },
-                            { key: 'end_date', value: endDate },
-                        ]);
-                    parallelTasks.push(fetchTask);
-                }
-
-                let data = [];
-                for (let i = 0; i < parallelTasks.length; i++) {
-                    try {
-                        const task = parallelTasks[i];
-                        const response = await task;
-                        if (response.success) {
-                            const rates = Object.entries(response.rates);
-                            const filteredRates = rates.filter(x => typeof x[1].ARS !== 'undefined').map(x => (
-                                {
-                                    fecha: this.util.replaceAll(x[0], '-', '/'),
-                                    valor: this.util.formatCurrency(x[1].ARS.toString()),
-                                }
-                            ));
-                            data.push(...filteredRates);
-                        }
-                    }
-                    catch {
-                        continue;
-                    }
-                }
-
-                if (data.length > 0) {
-                    return data.sort((a, b) => a.fecha > b.fecha);
+                const response = await this._fetchData(ENDPOINT_HISTORICAL,
+                [
+                    { key: 'source', value: currencyCode },
+                    { key: 'currencies', value: BASE_CURRENCY },
+                    { key: 'date', value: date },
+                ]);
+                if (response.success) {
+                    const rate = Object.values(response.quotes)[0];
+                    return {
+                        fecha: this.util.replaceAll(date, '-', '/'),
+                        valor: this.util.formatCurrency(rate.toString()),
+                    };
                 }
             } else {
                 console.log(ERROR_INVALID_CODE);
